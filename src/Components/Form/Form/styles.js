@@ -8,10 +8,10 @@ const Form1 = styled.form`
   flex-direction: column;
   border: 2px solid black;
   width: 60%;
+  height: 90%;
   justify-self: center;
-  align-self: center;
+
   height: 550px;
-  background-color: #0e2940;
   color: #49f2c2;
 `;
 

@@ -8,4 +8,7 @@ export const InputForm = styled.input`
   display: flex;
   width: 400px;
   height: 30px;
+  @media (min-width: 1400px) {
+    width: 800px;
+  }
 `;

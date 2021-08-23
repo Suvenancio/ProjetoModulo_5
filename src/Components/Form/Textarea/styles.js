@@ -7,4 +7,7 @@ export const TextareaForm = styled.textarea`
   display: flex;
   width: 400px;
   height: 100px;
+  @media (min-width: 1400px) {
+    width: 800px;
+  }
 `;
