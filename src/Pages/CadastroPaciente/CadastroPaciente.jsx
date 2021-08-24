@@ -4,17 +4,14 @@ import React, { Component } from 'react'
 import moment from 'moment'
 
 //Components
-import InputCadastro from '../../Components/FormCadastro/InputCadastro/InputCadastro'
-import ButtonCadastro from '../../Components/FormCadastro/ButtonCadastro/ButtonCadastro'
-import {MainCadastro} from '../../Components/FormCadastro/MainCadastro/MainCadastro'
-import {TitleCadastro} from '../../Components/FormCadastro/TitleCadastro/TitleCadastro'
-import {ImgCadastro} from '../../Components/FormCadastro/ImgCadastro/ImgCadastro'
-import {FormsCadastro} from '../../Components/FormCadastro/FormsCadastro/FormsCadastro'
+import Input from '../../Components/FormCadastro/Input/Input'
+import Button from '../../Components/FormCadastro/Button/Button'
+import {Main,Forms,Title,ImgCadastro} from './StyleCadastro'
 import {SpanMens} from '../../Components/FormCadastro/Span/Span'
 
 
 //img
-import imgCadastro from '../../assents/imgCadastro.jpeg'
+import imgCadastro from '../../assets/imgCadastro.jpeg'
 
 export default class CadastroPaciente extends Component {
     constructor(props){
@@ -24,7 +21,8 @@ export default class CadastroPaciente extends Component {
             email: "",
             data_nascimento: "",
             cpf: "",
-            endereco: "",
+            bairro: "",
+            rua: "",
             cidade: "",
             telefone: "",
             NomeInvalido: false,
@@ -40,7 +38,7 @@ export default class CadastroPaciente extends Component {
         switch (event.target.name){
             case "nome" :
                 //Validação Nome
-                if(event.target.value.length > 4)
+                if(event.target.value.length > 7)
                     this.setState({nome: event.target.value, NomeInvalido : false})
                 else
                     this.setState({NomeInvalido : true})
@@ -72,8 +70,11 @@ export default class CadastroPaciente extends Component {
                 else
                     this.setState({CpfInvalido : true})
                 break
-            case "endereco" :
-                this.setState({endereco : event.target.value})
+            case "bairro":
+                    this.setState({bairro : event.target.value})
+                break
+            case "rua" :
+                this.setState({rua: event.target.value})
                 break
             case "cidade" :
                 this.setState({cidade : event.target.value})
@@ -90,14 +91,14 @@ export default class CadastroPaciente extends Component {
                 throw new Error('Campo Invalido')
         }
     }
-    handleSubmit = (event) =>{
+    handleSubmit = async (event) =>{
         event.preventDefault()
         let json = {
             nome : this.state.nome,
             email : this.state.email,
             data_nascimento: this.state.data_nascimento,
             cpf: this.state.cpf,
-            endereco: this.state.endereco,
+            endereco: `Bairro:${this.state.bairro} Rua:${this.state.rua}`,
             cidade: this.state.cidade,
             telefone: this.state.telefone
         }
@@ -108,45 +109,49 @@ export default class CadastroPaciente extends Component {
                 "Content-type": "application/json; charset=utf-8"},
             body: JSON.stringify(json)
         }
-        fetch('https://projeto-dentista-api-m4.herokuapp.com/paciente',requestOptions)
-        .then(response => response.json())
-        .then(json => this.confirmaDados(json))
+        await fetch('https://projeto-dentista-api-m4.herokuapp.com/paciente',requestOptions)
+            .then(response => response.json())
+            .then(json => this.confirmaDados(json))
     }
+
     confirmaDados = (json) =>{
-        console.log(json)
+       console.log(json)
     }
 
     render() {
         return (
-            <MainCadastro>
-                <TitleCadastro>Cadastro:</TitleCadastro>
+            <Main>
+                <Title>Cadastro:</Title>
                 <ImgCadastro src={imgCadastro} alt="imagem Cadastro"/>
-                <FormsCadastro onSubmit={this.handleSubmit}>
+                <Forms onSubmit={this.handleSubmit}>
                     {/* Nome */}
-                    <InputCadastro type="text" name="nome" placeholder=" nome completo" onChange={this.handleInputChange}>Nome: </InputCadastro>
+                    <Input type="text" name="nome" placeholder=" nome completo" onChange={this.handleInputChange} width="300px" height="30px">Nome: </Input>
                     { this.state.NomeInvalido === true && <SpanMens>Nome inválido</SpanMens>}
                     {/* Email */}
-                    <InputCadastro type="email" name="email" placeholder=" seuemail@email.com" onChange={this.handleInputChange}>Email: </InputCadastro>
+                    <Input type="email" name="email" placeholder=" seuemail@email.com" onChange={this.handleInputChange} width="300px" height="30px">Email: </Input>
                     { this.state.EmailInvalido === true && <SpanMens>Email Inválido</SpanMens>}
                     {/* Data Nascimento */}
-                    <InputCadastro style={{textAlign: "center"}} type="date" name="data_nascimento" onChange={this.handleInputChange}>Data de Nascimento: </InputCadastro>
+                    <Input style={{textAlign: "center"}} type="date" name="data_nascimento" onChange={this.handleInputChange} width="300px" height="30px">Data de Nascimento: </Input>
                     { this.state.Data_nascimentoInvalido === true && <SpanMens>Data de Nascimento Inválida</SpanMens>}
                     {/* CPF */}
-                    <InputCadastro type="text" name="cpf" placeholder=" 000.000.000-00" onChange={this.handleInputChange}>CPF: </InputCadastro>
+                    <Input type="text" name="cpf" placeholder=" 000.000.000-00" onChange={this.handleInputChange} width="300px" height="30px">CPF: </Input>
                     { this.state.CpfInvalido === true && <SpanMens>CPF Inválido</SpanMens>}
-                    {/* Endereço */}
-                    <InputCadastro type="text" name="endereco" onChange={this.handleInputChange}>Endereço: </InputCadastro>
-                    { this.state.EnderecoInvalido === true && <SpanMens>Endereço Inválido</SpanMens>}
+                    {/* Bairro */}
+                    <Input type="text" name="bairro" placeholder=" Bairro" onChange={this.handleInputChange} width="300px" height="30px">Bairro: </Input>
+                    { this.state.EnderecoInvalido === true && <SpanMens>Bairro Inválido</SpanMens>}
+                    {/* Rua */}
+                    <Input type="text" name="rua" placeholder=" Rua" onChange={this.handleInputChange} width="300px" height="30px">Rua: </Input>
+                    { this.state.EnderecoInvalido === true && <SpanMens>Rua Inválida</SpanMens>}
                     {/* Cidade */}
-                    <InputCadastro type="text" name="cidade" placeholder=" Rio de janeiro" onChange={this.handleInputChange}>Cidade: </InputCadastro>
+                    <Input type="text" name="cidade" placeholder=" Rio de janeiro" onChange={this.handleInputChange} width="300px" height="30px">Cidade: </Input>
                     { this.state.CidadeInvalido === true && <SpanMens>Cidade Inválida</SpanMens>}
                     {/* Telefone */}
-                    <InputCadastro type="text" name="telefone" placeholder=" (xx)xxxxx-xxxx" onChange={this.handleInputChange}>Telefone:</InputCadastro>
+                    <Input type="text" name="telefone" placeholder=" (xx)xxxxx-xxxx" onChange={this.handleInputChange} width="300px" height="30px">Telefone:</Input>
                     { this.state.TelefoneInvalido === true && <SpanMens>Telefone Inválido</SpanMens>}
 
-                    <ButtonCadastro type="submit">Enviar</ButtonCadastro>
-                </FormsCadastro>
-            </MainCadastro>
+                    <Button width="150px" height="30px" type="submit">Enviar</Button>
+                </Forms>
+            </Main>
         )
     }
 }
