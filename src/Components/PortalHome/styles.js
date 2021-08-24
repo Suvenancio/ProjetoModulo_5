@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const PortalHomeContainer = styled.section`
   height: 550px;
-
   display: flex;
   align-items: center;
   background-color: rgba(14, 41, 64);
@@ -44,4 +43,15 @@ export const DivDesenho = styled.div`
   border-radius: 10px;
   width: 400px;
   background: url('https://i.pinimg.com/564x/4f/da/8e/4fda8e9a7be6a9ae7c5dc96ce811337c.jpg');
+`;
+
+export const CardLoginHome = styled.div`
+  height: 350px;
+  color: #49f2c2;
+  background-color: #013a40;
+  border: 2px solid #49f2c2;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+   
 `;

@@ -9,6 +9,7 @@ export const ButtonForm = styled.button`
   cursor: pointer;
   &:hover {
     background-color: rgba(14, 41, 64, 0.8);
+
     color: #49f2c2;
   }
 `;

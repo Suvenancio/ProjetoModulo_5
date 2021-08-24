@@ -13,6 +13,7 @@ export const BannerContainer = styled.section`
 
 export const CardBanner = styled.div`
   background-color: rgba(14, 41, 64, 0.8);
+
   border: 1px solid #49f2c2;
   border-radius: 30px;
   margin-right: 30px;
