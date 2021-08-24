@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+//Animação
+const openMain = keyframes`
+    from{
+        opacity: 0;
+        transform: translateX(-20px)
+    }to{
+        opacity: 1;
+    }
+}
+`
 
 export const FormsCadastro = styled.form`
     grid-area: form;
@@ -10,4 +21,5 @@ export const FormsCadastro = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation: 1s ${openMain};
 `
