@@ -1,12 +1,7 @@
 import './App.css';
-import FaleConosco from './Pages/FaleConosco/FaleConosco';
 
 function App() {
-  return (
-    <div className="App">
-      <FaleConosco />
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;

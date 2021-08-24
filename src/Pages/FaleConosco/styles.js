@@ -6,6 +6,7 @@ export const Div = styled.div`
 
 export const Unidade = styled.ul`
   border: 1px solid #49f2c2;
+  background-color: #013a40;
   border-radius: 10px;
   width: 90%;
   margin-left: 10px;
@@ -25,4 +26,11 @@ export const DivUnidade = styled.div`
     background-color: #49f2c2;
     border: 1px solid #49f2c2;
   }
+`;
+
+export const DivButton = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  align-self: flex-end;
+  margin-right: 130px;
 `;

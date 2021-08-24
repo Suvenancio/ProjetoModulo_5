@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Form from '../../Components/Form/Form/Form';
 import Select from '../../Components/Form/Select/Select';
-import { Div, DivUnidade, Unidade } from './styles';
+import { Div, DivButton, DivUnidade, Unidade } from './styles';
 import Main from '../../Components/Main/Main';
 import Label from '../../Components/Form/Label/Label';
 import Input from '../../Components/Form/Input/Input';
@@ -27,9 +27,6 @@ export default class FaleConosco extends Component {
   render() {
     return (
       <div>
-        <header>
-          <h1>teste</h1>
-        </header>
         <Main>
           <Form>
             <h1>Fale conosco!</h1>
@@ -77,7 +74,9 @@ export default class FaleConosco extends Component {
                 type="text"
               />
             </Label>
-            <Button nome="Enviar" type="submit" />
+            <DivButton>
+              <Button width="150px" nome="Enviar" type="submit" />
+            </DivButton>
           </Form>
           <Form>
             <h1>Procure uma unidade próxima a você</h1>
@@ -113,5 +112,4 @@ export default class FaleConosco extends Component {
       </div>
     );
   }
-  executeScroll = () => this.myRef.current.scrollIntoView();
 }
