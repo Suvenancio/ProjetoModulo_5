@@ -2,6 +2,7 @@ import './App.css';
 import BannerHome from './Components/BannerHome/BannerHome';
 import MedicoHome from './Components/MedicoHome/MedicoHome';
 import PortalHome from './Components/PortalHome/PortalHome';
+import EspHome from './Components/EspHome/EspHome';
 
 import FaleConosco from './Pages/FaleConosco/FaleConosco';
 
@@ -10,7 +11,8 @@ function App() {
     <div className="App">
       <MedicoHome />
       <PortalHome />
-      <BannerHome />7
+      <EspHome />
+      <BannerHome />
       <FaleConosco />
     </div>
   );

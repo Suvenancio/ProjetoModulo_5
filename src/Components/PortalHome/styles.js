@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const PortalHomeContainer = styled.section`
   height: 550px;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   background-color: rgba(14, 41, 64);
 `;
@@ -36,22 +37,30 @@ export const BalaoP = styled.p`
 `;
 
 export const DivDesenho = styled.div`
-  margin-left: 100px;
   position: relative;
   height: 450px;
-  border: 2px solid #49f2c2;
+  box-shadow: rgb(0 0 0 / 25%) 0px 5px 10px;
   border-radius: 10px;
   width: 400px;
   background: url('https://i.pinimg.com/564x/4f/da/8e/4fda8e9a7be6a9ae7c5dc96ce811337c.jpg');
 `;
 
-export const CardLoginHome = styled.div`
-  height: 350px;
+export const CardPortal = styled.div`
+  height: 300px;
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
   color: #49f2c2;
-  background-color: #013a40;
-  border: 2px solid #49f2c2;
-  border-radius: 10px;
+  background: #090922ad;
+  box-shadow: rgb(0 0 0 / 25%) 0px 5px 10px;
+  /* border: 0px solid #49f2c2; */
+  border-radius: 50%;
   display: flex;
   flex-direction: column;
-   
+`;
+
+export const DivP = styled.p`
+  width: 50%;
 `;

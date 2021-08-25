@@ -1,4 +1,10 @@
 import styled from 'styled-components';
+
+export const ContainerFale = styled.main`
+  background-color: rgba(14, 41, 64);
+  display: flex;
+`;
+
 export const Div = styled.div`
   display: flex;
   flex-direction: row;

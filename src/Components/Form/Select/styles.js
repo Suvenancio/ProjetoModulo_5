@@ -8,7 +8,7 @@ export const SelectForm = styled.select`
   border-radius: 10px;
   border: 1px solid #49f2c2;
   display: flex;
-  width: 200px;
+  width: ${(props) => props.width};
   height: 30px;
   align-items: center;
   flex-direction: row;
@@ -22,19 +22,11 @@ export const SelectForm = styled.select`
     color: #49f2c2;
   }
 `;
-export const SelectEscolhaUnidade = styled.select`
-  margin-top: 10px;
-  margin-left: 5px;
-  cursor: pointer;
-  background-color: #013a40;
-  border-radius: 10px;
-  border: 1px solid #49f2c2;
+
+export const LabelForm = styled.label`
   display: flex;
-  width: 410px;
-  height: 30px;
-  align-items: center;
-  flex-direction: row;
-  option {
-    color: #49f2c2;
-  }
+  flex-direction: column;
+  align-items: flex-start;
+  font-weight: bold;
+  margin-bottom: 10px;
 `;

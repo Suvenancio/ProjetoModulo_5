@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const BannerContainer = styled.section`
   background-image: url('https://elevareodontologia.com.br/wp-content/uploads/2020/04/elevare_lentes_de_contato_dental.jpg');
-  border-bottom: 1px solid #49f2c2;
   background-size: cover;
   background-position: left center;
   height: 350px;
@@ -12,10 +11,9 @@ export const BannerContainer = styled.section`
 `;
 
 export const CardBanner = styled.div`
-  background-color: rgba(14, 41, 64, 0.8);
-
-  border: 1px solid #49f2c2;
-  border-radius: 30px;
+  background-color: #090922ad;
+  /* border: 1px solid #49f2c2; */
+  border-radius: 50%;
   margin-right: 30px;
   margin-top: 20px;
   width: 25%;
