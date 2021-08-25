@@ -7,6 +7,11 @@ export const Header = styled.header`
     font-family: 'Work Sans', sans-serif;
     color: whitesmoke;
     font-size: 1.2em;
+    >img{
+        max-width: 120px;
+        max-height: 60px;
+    
+    }
    
 `
 export const Nav = styled.nav`
@@ -18,9 +23,10 @@ export const Nav = styled.nav`
 export const Link = styled.a`
     padding: 20px;
     >img{
-      
+        
         justify-content: center;
     }
 
 
 `
+

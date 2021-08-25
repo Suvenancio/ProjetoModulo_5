@@ -27,7 +27,8 @@ const Dentistas = () => {
             {
             !!api && apiChegou ? (
                 api.map((item) =>
-                    <Card foto={item.FOTO} nome={item.NOME} especialidade={item.ESPECIALIDADE} cro={item.CRO}/>
+                    <Card foto={item.FOTO} nome={item.NOME} 
+                    especialidade={item.ESPECIALIDADE} cro={item.CRO}/>
                     
                 )
             ) : (<p>Erro ao carregar!</p>)
