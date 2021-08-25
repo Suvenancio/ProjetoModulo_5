@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import styled from 'styled-components';
 
-export const ButtonGlobal = styled.button`
+const ButtonGlobal = styled.button`
   margin-left: 250px;
   width: ${props => props.width}; //150px
   height: ${props => props.height}; // 30px
@@ -20,15 +20,13 @@ export const ButtonGlobal = styled.button`
   }
 `;
 
-export default class Button extends Component {
-    render() {
-        return (<>
-            <ButtonGlobal width={this.props.width}
-            height={this.props.height}
-            type={this.props.type} 
-            onClick={this.props.onClick}
-            className={this.props.className}
-            >{this.props.children}</ButtonGlobal>
-        </>)
-    }
+export default function Button (props) {
+        return (
+            <ButtonGlobal width={props.width}
+            height={props.height}
+            type={props.type} 
+            onClick={props.onClick}
+            className={props.className}
+            >{props.children}</ButtonGlobal>
+        )
 }

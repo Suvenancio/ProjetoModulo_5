@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 
-export const LabelForm = styled.label`
+const LabelForm = styled.label`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -10,7 +10,7 @@ export const LabelForm = styled.label`
   color: #49f2c2;
 `;
 
-export const InputForm = styled.input`
+const InputForm = styled.input`
   margin-top: 10px;
   background-color: #0e2940;
   border-radius: 10px;
@@ -24,19 +24,17 @@ export const InputForm = styled.input`
   };
 `;
 
-export default class Input extends Component {
-    render() {
-        return (<>
-            <LabelForm>{this.props.children} 
-            <InputForm type={this.props.type}
-            width={this.props.width}
-            height={this.props.height}
-            name={this.props.name} 
-            onChange={this.props.onChange} 
-            className={this.props.className}
-            style={this.props.style}
-            placeholder={this.props.placeholder}/>
+export default function Input(props){
+        return (
+            <LabelForm>{props.children} 
+            <InputForm type={props.type}
+            width={props.width}
+            height={props.height}
+            name={props.name} 
+            onChange={props.onChange} 
+            className={props.className}
+            style={props.style}
+            placeholder={props.placeholder}/>
             </LabelForm>
-        </>)
-    }
+        )
 }

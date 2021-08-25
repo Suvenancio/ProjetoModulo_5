@@ -48,3 +48,7 @@ export const ImgCadastro = styled.img`
     border-radius: 10%;
     animation: 1.7s ${openMain};
 `
+//Span
+export const SpanMens = styled.span`
+    color : red;
+`
