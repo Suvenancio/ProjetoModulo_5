@@ -4,14 +4,15 @@ import React, { useState } from 'react'
 import moment from 'moment'
 
 //Components
-import Input from '../../Components/FormCadastro/Input/Input'
-import Button from '../../Components/FormCadastro/Button/Button'
+import Input from '../../Components/Form/Input/Input'
+import Button from '../../Components/Form/Button/Button'
 import {Main,Forms,Title,ImgCadastro,SpanMens} from './StyleCadastro'
-
+import { Grid,Column } from '../../Components/Grid'
+import Loading from '../../Components/Loading'
+import DadosEnviados from '../../Components/DadosEnviados'
 
 //img
 import imgCadastro from '../../assets/imgCadastro.jpeg'
-import imgLoadPage from '../../assets/LoadingDente.gif'
 
 export default function CadastroPaciente(){
         const [ConfirmaDados, setConfirmaDados] = useState(false)
@@ -57,6 +58,7 @@ export default function CadastroPaciente(){
                 //Validação Data de Nascimento - Usando Moment para pegar as datas.
                 const dataNascimento = moment(event.target.value).format("DD/MM/YYYY")
                 const dataAtual = moment().format('DD/MM/YYYY')
+
                 if(dataNascimento < dataAtual){
                     setData_nascimentoInvalido(false)
                     setData_nascimento(dataNascimento)
@@ -141,15 +143,7 @@ export default function CadastroPaciente(){
     
     if(LoadPage){
         return(<>
-            {ConfirmaDados ? 
-            <div>
-                <h1>Cadastro Aprovado! Bem-vindo(a)</h1>
-                <img alt="Tudo certo" src="https://sucessodonto.com.br/wp-content/uploads/2021/01/tooth-whitening.svg"/>
-            </div> 
-            : 
-            <div>
-                <img alt="LoadImg" src={imgLoadPage}/>
-            </div>}
+            {ConfirmaDados ? <DadosEnviados/>: <Loading/>}
         </>)
     }else{
         return (
@@ -157,32 +151,45 @@ export default function CadastroPaciente(){
                 <Title>Cadastro:</Title>
                 <ImgCadastro src={imgCadastro} alt="imagem Cadastro"/>
                 <Forms onSubmit={handleSubmit}>
-                    {/* Nome */}
-                    <Input type="text" name="nome" placeholder=" nome completo" onChange={handleInputChange} width="300px" height="30px">Nome: </Input>
-                    { NomeInvalido === true && <SpanMens>Nome inválido</SpanMens>}
-                    {/* Email */}
-                    <Input type="email" name="email" placeholder=" seuemail@email.com" onChange={handleInputChange} width="300px" height="30px">Email: </Input>
-                    { EmailInvalido === true && <SpanMens>Email Inválido</SpanMens>}
-                    {/* Data Nascimento */}
-                    <Input style={{textAlign: "center"}} type="date" name="data_nascimento" onChange={handleInputChange} width="300px" height="30px">Data de Nascimento: </Input>
-                    { Data_nascimentoInvalido === true && <SpanMens>Data de Nascimento Inválida</SpanMens>}
-                    {/* CPF */}
-                    <Input type="text" name="cpf" placeholder=" 000.000.000-00" onChange={handleInputChange} width="300px" height="30px">CPF: </Input>
-                    { CpfInvalido === true && <SpanMens>CPF Inválido</SpanMens>}
-                    {/* Bairro */}
-                    <Input type="text" name="bairro" placeholder=" Bairro" onChange={handleInputChange} width="300px" height="30px">Bairro: </Input>
-                    { BairroInvalido === true && <SpanMens>Bairro Inválido</SpanMens>}
-                    {/* Rua */}
-                    <Input type="text" name="rua" placeholder=" Rua" onChange={handleInputChange} width="300px" height="30px">Rua: </Input>
-                    { RuaInvalido === true && <SpanMens>Rua Inválida</SpanMens>}
-                    {/* Cidade */}
-                    <Input type="text" name="cidade" placeholder=" Rio de janeiro" onChange={handleInputChange} width="300px" height="30px">Cidade: </Input>
-                    { CidadeInvalido === true && <SpanMens>Cidade Inválida</SpanMens>}
-                    {/* Telefone */}
-                    <Input type="text" name="telefone" placeholder=" (xx)xxxxx-xxxx" onChange={handleInputChange} width="300px" height="30px">Telefone:</Input>
-                    { TelefoneInvalido === true && <SpanMens>Telefone Inválido</SpanMens>}
-
-                    <Button width="150px" height="30px" type="submit">Enviar</Button>
+                    <Grid>
+                        <Column column="1">
+                            <Input type="text" name="nome" placeholder=" nome completo" onChange={handleInputChange} width="200px" height="30px">Nome: </Input>
+                        </Column>
+                        <Column column="2">
+                            <Input type="email" name="email" placeholder=" seuemail@email.com" onChange={handleInputChange} width="300px" height="30px">Email: </Input>
+                        </Column>
+                        <Column column="1">
+                            <Input style={{textAlign: "center"}} type="date" name="data_nascimento" onChange={handleInputChange} width="150px" height="30px">Data de Nascimento: </Input>
+                        </Column>
+                        <Column column="2">
+                            <Input type="text" name="cpf" placeholder=" 000.000.000-00" onChange={handleInputChange} width="300px" height="30px">CPF: </Input>
+                        </Column>
+                        <Column column="1">
+                            <Input type="text" name="bairro" placeholder=" Bairro" onChange={handleInputChange} width="300px" height="30px">Bairro: </Input>
+                        </Column>
+                        <Column column="2">
+                            <Input type="text" name="rua" placeholder=" Rua" onChange={handleInputChange} width="300px" height="30px">Rua: </Input>
+                        </Column>
+                        <Column column="1">
+                            <Input type="text" name="cidade" placeholder=" Rio de janeiro" onChange={handleInputChange} width="180px" height="30px">Cidade: </Input>
+                        </Column>
+                        <Column column="2">
+                            <Input type="text" name="telefone" placeholder=" (xx)xxxxx-xxxx" onChange={handleInputChange} width="150px" height="30px">Telefone:</Input>
+                        </Column>
+                        <Column column="1">
+                        { NomeInvalido === true && <SpanMens>* Nome inválido</SpanMens>}
+                        { EmailInvalido === true && <SpanMens>* Email Inválido</SpanMens>}
+                        { Data_nascimentoInvalido === true && <SpanMens>* Data de Nascimento Inválida</SpanMens>}
+                        { CpfInvalido === true && <SpanMens>* CPF Inválido</SpanMens>}
+                        { BairroInvalido === true && <SpanMens>* Bairro Inválido</SpanMens>}
+                        { RuaInvalido === true && <SpanMens>* Rua Inválida</SpanMens>}
+                        { CidadeInvalido === true && <SpanMens>* Cidade Inválida</SpanMens>}
+                        { TelefoneInvalido === true && <SpanMens>* Telefone Inválido</SpanMens>}
+                        </Column>
+                        <Column column="2">
+                        <Button width="100px" height="30px" type="submit">Enviar</Button>
+                        </Column>
+                    </Grid>
                 </Forms>
             </Main>
         )
