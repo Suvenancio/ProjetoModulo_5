@@ -8,7 +8,11 @@ import Footer from './Components/Footer/Footer';
 import FaleConosco from './Pages/FaleConosco/FaleConosco';
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <FaleConosco />
+    </div>
+  );
 }
 
 export default App;
