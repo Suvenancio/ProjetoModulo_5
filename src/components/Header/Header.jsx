@@ -1,17 +1,15 @@
 import React from 'react'
 import * as S from './Header.styles'
 import portal from '../../assets/portal.png'
-import logo from '../../assets/odonto_pride.png'
+
 
 
 const Header = () => {
 
         return(
             
-            <S.Header>
-                   
+            <S.Header>   
                 <S.Nav>
-                
                     <S.Link> <img src={portal}/> Portal do paciente</S.Link>
                     <S.Link>Fundadores</S.Link> 
                     <S.Link>Cadastre-se</S.Link>
