@@ -29,6 +29,7 @@ export const CardMedicoHome = styled.div`
   width: 20%;
   padding: 20px;
   padding-top: 30px;
+  margin-left: 23px;
 `;
 
 export const ButtonCardMedico = styled.button`

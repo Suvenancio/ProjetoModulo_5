@@ -14,7 +14,7 @@ export const CardBanner = styled.div`
   background-color: #090922ad;
   /* border: 1px solid #49f2c2; */
   border-radius: 50%;
-  margin-right: 30px;
+  margin-right: 42px;
   margin-top: 20px;
   width: 25%;
   height: 80%;

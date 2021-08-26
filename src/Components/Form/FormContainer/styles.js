@@ -6,7 +6,7 @@ const Form1 = styled.form`
   padding: 5px;
   align-items: center;
   flex-direction: column;
-  border: 2px solid black;
+  border-left: 1px solid #49f2c2;
   width: 60%;
   height: 90%;
   justify-self: center;
