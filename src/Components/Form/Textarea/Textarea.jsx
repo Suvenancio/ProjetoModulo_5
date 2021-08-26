@@ -9,7 +9,7 @@ const TextareaForm = styled.textarea`
   border-radius: 10px;
   border: 1px solid #49f2c2;
   display: flex;
-  width: 400px;
+  width: ${(props) => props.width};
   height: 100px;
   @media (min-width: 1400px) {
     width: 800px;
@@ -22,6 +22,7 @@ export default function Textarea(props) {
         {props.children}
 
         <TextareaForm
+          width={props.width}
           placeholder={props.placeholder}
           name={props.name}
           type={props.type}
