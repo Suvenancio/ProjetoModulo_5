@@ -1,251 +1,190 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react'
 
 //Moment
-import moment from 'moment';
+import moment from 'moment'
 
 //Components
-import Input from '../../Components/Form/Input/Input';
-import Button from '../../Components/Form/Button/Button';
-import { Main, Forms, Title, ImgCadastro, DivButton } from './StyleCadastro';
-import { SpanMens } from '../../Components/Form/Span/Span';
+import Input from '../../Components/FormCadastro/Input/Input'
+import Button from '../../Components/FormCadastro/Button/Button'
+import {Main,Forms,Title,ImgCadastro,SpanMens} from './StyleCadastro'
+
 
 //img
-import imgCadastro from '../../assets/imgCadastro.jpeg';
+import imgCadastro from '../../assets/imgCadastro.jpeg'
+import imgLoadPage from '../../assets/LoadingDente.gif'
 
-export default class CadastroPaciente extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nome: '',
-      email: '',
-      data_nascimento: '',
-      cpf: '',
-      bairro: '',
-      rua: '',
-      cidade: '',
-      telefone: '',
-      NomeInvalido: false,
-      EmailInvalido: false,
-      Data_nascimentoInvalido: false,
-      CpfInvalido: false,
-      EnderecoInvalido: false,
-      CidadeInvalido: false,
-      TelefoneInvalido: false,
-    };
-  }
-  handleInputChange = (event) => {
-    switch (event.target.name) {
-      case 'nome':
-        //Validação Nome
-        if (event.target.value.length > 7)
-          this.setState({ nome: event.target.value, NomeInvalido: false });
-        else this.setState({ NomeInvalido: true });
-        break;
-      case 'email':
-        //Validação Email - Usando RegEx
-        const regEmail = /\w@.+(.com|.com.br)$/g;
-        if (event.target.value.match(regEmail) != null)
-          this.setState({ email: event.target.value, EmailInvalido: false });
-        else this.setState({ EmailInvalido: true });
-        break;
+export default function CadastroPaciente(){
+        const [ConfirmaDados, setConfirmaDados] = useState(false)
+        const [LoadPage,setLoadPage] = useState(false)
+        const [nome,setNome] = useState("")
+        const [email,setEmail] = useState("")
+        const [data_nascimento, setData_nascimento] = useState("")
+        const [cpf, setCpf] = useState("")
+        const [bairro, setBairro] = useState("")
+        const [rua, setRua] = useState("")
+        const [cidade,setCidade] = useState("")
+        const [telefone, setTelefone] = useState("")
+        const [NomeInvalido, setNomeInvalido] = useState(false)
+        const [EmailInvalido, setEmailInvalido] = useState(false)
+        const [Data_nascimentoInvalido, setData_nascimentoInvalido] = useState(false)
+        const [CpfInvalido,setCpfInvalido] = useState(false)
+        const [BairroInvalido,setBairroInvalido] = useState(false)
+        const [RuaInvalido, setRuaInvalido] = useState(false)
+        const [CidadeInvalido,setCidadeInvalido] = useState(false)
+        const [TelefoneInvalido,setTelefoneInvalido] = useState(false)
 
-      case 'data_nascimento':
-        //Validação Data de Nascimento - Usando Moment para pegar as datas.
-        const dataNascimento = moment(event.target.value).format('DD/MM/YYYY');
-        const dataAtual = moment().format('DD/MM/YYYY');
-        if (dataNascimento < dataAtual) {
-          this.setState({
-            data_nascimento: dataNascimento,
-            Data_nascimentoInvalido: false,
-          });
-        } else {
-          this.setState({ Data_nascimentoInvalido: true });
+    const handleInputChange = (event) =>{
+        switch (event.target.name){
+            case "nome" :
+                //Validação Nome
+                if(event.target.value.length > 7){
+                    setNomeInvalido(false)
+                    setNome(event.target.value)
+                }else
+                    setNomeInvalido(true)
+                break
+            case "email" :
+                //Validação Email - Usando RegEx
+                const regEmail = /\w@.+(.com|.com.br)$/g;
+                if(event.target.value.match(regEmail) != null){
+                    setEmailInvalido(false)
+                    setEmail(event.target.value)
+                }else
+                    setEmailInvalido(true)
+                break
+            
+            case "data_nascimento" :
+                //Validação Data de Nascimento - Usando Moment para pegar as datas.
+                const dataNascimento = moment(event.target.value).format("DD/MM/YYYY")
+                const dataAtual = moment().format('DD/MM/YYYY')
+                if(dataNascimento < dataAtual){
+                    setData_nascimentoInvalido(false)
+                    setData_nascimento(dataNascimento)
+                }else{
+                    setData_nascimentoInvalido(true)
+                }
+                break
+            case "cpf" :
+                //Validação CPF - Usando RegEx
+                const regexCpf = /\d{3}\.\d{3}\.\d{3}-\d{2}/g
+                if(event.target.value.match(regexCpf) != null){
+                    setCpfInvalido(false)
+                    setCpf(event.target.value)
+                }else
+                    setCpfInvalido(true)
+                break
+            case "bairro":
+                if(event.target.value.length > 5){
+                    setBairroInvalido(false)
+                    setBairro(event.target.value)
+                }else{
+                    setBairroInvalido(true)
+                }
+                break
+            case "rua" :
+                if(event.target.value.length > 5){
+                    setRuaInvalido(false)
+                    setRua(event.target.value)
+                }else
+                    setRuaInvalido(true)
+                break
+            case "cidade" :
+                if(event.target.value.length > 5){
+                    setCidadeInvalido(false)
+                    setCidade(event.target.value)
+                }else
+                    setCidadeInvalido(true)
+                break
+            case "telefone" :
+                //Validr numero de telefone - Usando RegEx
+                const regexTelefone = /^\(\d\d\)\s?\d{5}-?\d{4}$/g
+                if(event.target.value.match(regexTelefone)){
+                    setTelefoneInvalido(false)
+                    setTelefone(event.target.value)
+                }
+                else
+                    setTelefoneInvalido(true)
+                break   
+            default :
+                throw new Error('Campo Invalido')
         }
-        break;
-      case 'cpf':
-        //Validação CPF - Usando RegEx
-        const regexCpf = /\d{3}\.\d{3}\.\d{3}-\d{2}/g;
-        if (event.target.value.match(regexCpf) != null)
-          this.setState({ cpf: event.target.value, CpfInvalido: false });
-        else this.setState({ CpfInvalido: true });
-        break;
-      case 'bairro':
-        this.setState({ bairro: event.target.value });
-        break;
-      case 'rua':
-        this.setState({ rua: event.target.value });
-        break;
-      case 'cidade':
-        this.setState({ cidade: event.target.value });
-        break;
-      case 'telefone':
-        //Validr numero de telefone - Usando RegEx
-        const regexTelefone = /^\(\d\d\)\s?\d{5}-?\d{4}$/g;
-        if (event.target.value.match(regexTelefone))
-          this.setState({
-            telefone: event.target.value,
-            TelefoneInvalido: false,
-          });
-        else this.setState({ TelefoneInvalido: true });
-        break;
-      default:
-        throw new Error('Campo Invalido');
     }
-  };
-  handleSubmit = async (event) => {
-    event.preventDefault();
-    let json = {
-      nome: this.state.nome,
-      email: this.state.email,
-      data_nascimento: this.state.data_nascimento,
-      cpf: this.state.cpf,
-      endereco: `Bairro:${this.state.bairro} Rua:${this.state.rua}`,
-      cidade: this.state.cidade,
-      telefone: this.state.telefone,
-    };
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-type': 'application/json; charset=utf-8',
-      },
-      body: JSON.stringify(json),
-    };
-    await fetch(
-      'https://projeto-dentista-api-m4.herokuapp.com/paciente',
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((json) => this.confirmaDados(json));
-  };
+    const handleSubmit = async (event) =>{
+        event.preventDefault()
+        if(nome === "" && email === "" && cpf === ""){
+            setNomeInvalido(true)
+            setEmailInvalido(true)
+            setCpfInvalido(true)
+        }else{
+            setLoadPage(true) 
+            let json = {
+                nome : nome,
+                email : email,
+                data_nascimento: data_nascimento,
+                cpf: cpf,
+                endereco: `Bairro:${bairro} Rua:${rua}`,
+                cidade: cidade,
+                telefone: telefone
+            }
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    Accept:"application/json",
+                    "Content-type": "application/json; charset=utf-8"},
+                body: JSON.stringify(json)
+            }
+            await fetch('https://projeto-dentista-api-m4.herokuapp.com/paciente',requestOptions)
+                .then(response => response.json())
+                .then(dados => dados.EnvioDeDados && setConfirmaDados(true))
+        }
+    }
+    
+    if(LoadPage){
+        return(<>
+            {ConfirmaDados ? 
+            <div>
+                <h1>Cadastro Aprovado! Bem-vindo(a)</h1>
+                <img alt="Tudo certo" src="https://sucessodonto.com.br/wp-content/uploads/2021/01/tooth-whitening.svg"/>
+            </div> 
+            : 
+            <div>
+                <img alt="LoadImg" src={imgLoadPage}/>
+            </div>}
+        </>)
+    }else{
+        return (
+            <Main>
+                <Title>Cadastro:</Title>
+                <ImgCadastro src={imgCadastro} alt="imagem Cadastro"/>
+                <Forms onSubmit={handleSubmit}>
+                    {/* Nome */}
+                    <Input type="text" name="nome" placeholder=" nome completo" onChange={handleInputChange} width="300px" height="30px">Nome: </Input>
+                    { NomeInvalido === true && <SpanMens>Nome inválido</SpanMens>}
+                    {/* Email */}
+                    <Input type="email" name="email" placeholder=" seuemail@email.com" onChange={handleInputChange} width="300px" height="30px">Email: </Input>
+                    { EmailInvalido === true && <SpanMens>Email Inválido</SpanMens>}
+                    {/* Data Nascimento */}
+                    <Input style={{textAlign: "center"}} type="date" name="data_nascimento" onChange={handleInputChange} width="300px" height="30px">Data de Nascimento: </Input>
+                    { Data_nascimentoInvalido === true && <SpanMens>Data de Nascimento Inválida</SpanMens>}
+                    {/* CPF */}
+                    <Input type="text" name="cpf" placeholder=" 000.000.000-00" onChange={handleInputChange} width="300px" height="30px">CPF: </Input>
+                    { CpfInvalido === true && <SpanMens>CPF Inválido</SpanMens>}
+                    {/* Bairro */}
+                    <Input type="text" name="bairro" placeholder=" Bairro" onChange={handleInputChange} width="300px" height="30px">Bairro: </Input>
+                    { BairroInvalido === true && <SpanMens>Bairro Inválido</SpanMens>}
+                    {/* Rua */}
+                    <Input type="text" name="rua" placeholder=" Rua" onChange={handleInputChange} width="300px" height="30px">Rua: </Input>
+                    { RuaInvalido === true && <SpanMens>Rua Inválida</SpanMens>}
+                    {/* Cidade */}
+                    <Input type="text" name="cidade" placeholder=" Rio de janeiro" onChange={handleInputChange} width="300px" height="30px">Cidade: </Input>
+                    { CidadeInvalido === true && <SpanMens>Cidade Inválida</SpanMens>}
+                    {/* Telefone */}
+                    <Input type="text" name="telefone" placeholder=" (xx)xxxxx-xxxx" onChange={handleInputChange} width="300px" height="30px">Telefone:</Input>
+                    { TelefoneInvalido === true && <SpanMens>Telefone Inválido</SpanMens>}
 
-  confirmaDados = (json) => {
-    console.log(json);
-  };
-
-  render() {
-    return (
-      <Main>
-        <Title>Cadastro:</Title>
-        <ImgCadastro src={imgCadastro} alt="imagem Cadastro" />
-        <Forms onSubmit={this.handleSubmit}>
-          {/* Nome */}
-          <Input
-            type="text"
-            name="nome"
-            placeholder=" nome completo"
-            onChange={this.handleInputChange}
-            width="300px"
-            height="30px"
-          >
-            Nome:{' '}
-          </Input>
-          {this.state.NomeInvalido === true && (
-            <SpanMens>Nome inválido</SpanMens>
-          )}
-          {/* Email */}
-          <Input
-            type="email"
-            name="email"
-            placeholder=" seuemail@email.com"
-            onChange={this.handleInputChange}
-            width="300px"
-            height="30px"
-          >
-            Email:{' '}
-          </Input>
-          {this.state.EmailInvalido === true && (
-            <SpanMens>Email Inválido</SpanMens>
-          )}
-          {/* Data Nascimento */}
-          <Input
-            style={{ textAlign: 'center' }}
-            type="date"
-            name="data_nascimento"
-            onChange={this.handleInputChange}
-            width="300px"
-            height="30px"
-          >
-            Data de Nascimento:{' '}
-          </Input>
-          {this.state.Data_nascimentoInvalido === true && (
-            <SpanMens>Data de Nascimento Inválida</SpanMens>
-          )}
-          {/* CPF */}
-          <Input
-            type="text"
-            name="cpf"
-            placeholder=" 000.000.000-00"
-            onChange={this.handleInputChange}
-            width="300px"
-            height="30px"
-          >
-            CPF:{' '}
-          </Input>
-          {this.state.CpfInvalido === true && <SpanMens>CPF Inválido</SpanMens>}
-          {/* Bairro */}
-          <Input
-            type="text"
-            name="bairro"
-            placeholder=" Bairro"
-            onChange={this.handleInputChange}
-            width="300px"
-            height="30px"
-          >
-            Bairro:{' '}
-          </Input>
-          {this.state.EnderecoInvalido === true && (
-            <SpanMens>Bairro Inválido</SpanMens>
-          )}
-          {/* Rua */}
-          <Input
-            type="text"
-            name="rua"
-            placeholder=" Rua"
-            onChange={this.handleInputChange}
-            width="300px"
-            height="30px"
-          >
-            Rua:{' '}
-          </Input>
-          {this.state.EnderecoInvalido === true && (
-            <SpanMens>Rua Inválida</SpanMens>
-          )}
-          {/* Cidade */}
-          <Input
-            type="text"
-            name="cidade"
-            placeholder=" Rio de janeiro"
-            onChange={this.handleInputChange}
-            width="300px"
-            height="30px"
-          >
-            Cidade:{' '}
-          </Input>
-          {this.state.CidadeInvalido === true && (
-            <SpanMens>Cidade Inválida</SpanMens>
-          )}
-          {/* Telefone */}
-          <Input
-            type="text"
-            name="telefone"
-            placeholder=" (xx)xxxxx-xxxx"
-            onChange={this.handleInputChange}
-            width="300px"
-            height="30px"
-          >
-            Telefone:
-          </Input>
-          {this.state.TelefoneInvalido === true && (
-            <SpanMens>Telefone Inválido</SpanMens>
-          )}
-          <DivButton>
-            <Button width="150px" height="30px" type="submit">
-              Enviar
-            </Button>
-          </DivButton>
-        </Forms>
-      </Main>
-    );
-  }
+                    <Button width="150px" height="30px" type="submit">Enviar</Button>
+                </Forms>
+            </Main>
+        )
+    }
 }
