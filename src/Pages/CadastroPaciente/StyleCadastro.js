@@ -21,11 +21,12 @@ export const Main = styled.main`
     padding-bottom: 10px;
     justify-content: center;
     background: #0e2940;
+    text-align: center;
 `
 //Forms
 export const Forms = styled.form`
     grid-area: form;
-    border: 1px solid #141414;
+    border: 1px solid #49f2c2;
     border-radius: 5%;
     background: #090922ad;
     padding: 10px;
@@ -44,7 +45,7 @@ export const Title = styled.h1`
 export const ImgCadastro = styled.img`
     grid-area: img;
     height: 550px;
-    border: 1px solid #141414;
+    border: 2px solid #090922ad;
     border-radius: 10%;
     animation: 1.7s ${openMain};
 `

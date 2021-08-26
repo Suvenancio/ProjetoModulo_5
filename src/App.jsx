@@ -1,5 +1,3 @@
-import './App.css';
-
 //Pages
 import Login from './Pages/Login/Login'
 import CadastroPaciente from './Pages/CadastroPaciente/CadastroPaciente';

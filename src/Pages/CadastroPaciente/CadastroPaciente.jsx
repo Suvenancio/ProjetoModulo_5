@@ -11,8 +11,11 @@ import {Main,Forms,Title,ImgCadastro,SpanMens} from './StyleCadastro'
 
 //img
 import imgCadastro from '../../assets/imgCadastro.jpeg'
+import imgLoadPage from '../../assets/LoadingDente.gif'
 
 export default function CadastroPaciente(){
+        const [ConfirmaDados, setConfirmaDados] = useState(false)
+        const [LoadPage,setLoadPage] = useState(false)
         const [nome,setNome] = useState("")
         const [email,setEmail] = useState("")
         const [data_nascimento, setData_nascimento] = useState("")
@@ -108,31 +111,47 @@ export default function CadastroPaciente(){
     }
     const handleSubmit = async (event) =>{
         event.preventDefault()
-        let json = {
-            nome : nome,
-            email : email,
-            data_nascimento: data_nascimento,
-            cpf: cpf,
-            endereco: `Bairro:${bairro} Rua:${rua}`,
-            cidade: cidade,
-            telefone: telefone
+        if(nome === "" && email === "" && cpf === ""){
+            setNomeInvalido(true)
+            setEmailInvalido(true)
+            setCpfInvalido(true)
+        }else{
+            setLoadPage(true) 
+            let json = {
+                nome : nome,
+                email : email,
+                data_nascimento: data_nascimento,
+                cpf: cpf,
+                endereco: `Bairro:${bairro} Rua:${rua}`,
+                cidade: cidade,
+                telefone: telefone
+            }
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    Accept:"application/json",
+                    "Content-type": "application/json; charset=utf-8"},
+                body: JSON.stringify(json)
+            }
+            await fetch('https://projeto-dentista-api-m4.herokuapp.com/paciente',requestOptions)
+                .then(response => response.json())
+                .then(dados => dados.EnvioDeDados && setConfirmaDados(true))
         }
-        const requestOptions = {
-            method: 'POST',
-            headers: {
-                Accept:"application/json",
-                "Content-type": "application/json; charset=utf-8"},
-            body: JSON.stringify(json)
-        }
-        await fetch('https://projeto-dentista-api-m4.herokuapp.com/paciente',requestOptions)
-            .then(response => response.json())
-            .then(json => confirmaDados(json))
     }
-
-    const confirmaDados = (json) =>{
-       console.log(json.EnvioDeDados)
-    }
-
+    
+    if(LoadPage){
+        return(<>
+            {ConfirmaDados ? 
+            <div>
+                <h1>Cadastro Aprovado! Bem-vindo(a)</h1>
+                <img alt="Tudo certo" src="https://sucessodonto.com.br/wp-content/uploads/2021/01/tooth-whitening.svg"/>
+            </div> 
+            : 
+            <div>
+                <img alt="LoadImg" src={imgLoadPage}/>
+            </div>}
+        </>)
+    }else{
         return (
             <Main>
                 <Title>Cadastro:</Title>
@@ -167,4 +186,5 @@ export default function CadastroPaciente(){
                 </Forms>
             </Main>
         )
+    }
 }
