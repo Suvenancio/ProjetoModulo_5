@@ -4,11 +4,11 @@ import * as S from './Cards.styles';
 const Card = (props) => {
   return (
     <S.Card>
-      <img src={props.foto} alt="dentista" />
+      <img src={props.foto} alt="foto" />
       <div>
-        <p>{props.nome}</p>
-        <p>{props.especialidade}</p>
-        <p>{props.cro}</p>
+        <p>Dr(a) {props.nome}</p>
+        <p>Especialidade : {props.especialidade}</p>
+        <p>CRO : {props.cro}</p>
       </div>
     </S.Card>
   );

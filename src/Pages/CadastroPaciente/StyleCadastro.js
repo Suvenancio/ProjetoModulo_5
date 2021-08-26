@@ -21,6 +21,7 @@ export const Main = styled.main`
   padding-bottom: 10px;
   justify-content: center;
   background: #0e2940;
+  text-align: center;
 `;
 //Forms
 export const Forms = styled.form`
@@ -54,4 +55,7 @@ export const DivButton = styled.div`
   flex-direction: row-reverse;
   align-self: flex-end;
   margin-right: 130px;
+`;
+export const SpanMens = styled.span`
+  color: red;
 `;
