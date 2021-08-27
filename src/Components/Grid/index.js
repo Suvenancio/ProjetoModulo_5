@@ -5,8 +5,8 @@ export const Grid = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(5,1fr);
   align-items: center;
-  row-gap: 15px;
-  column-gap: 10px;
+  row-gap: 14px;
+  column-gap: 8px;
   button{
     margin-left: 27vh;
   }

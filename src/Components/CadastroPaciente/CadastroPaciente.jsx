@@ -6,7 +6,7 @@ import moment from 'moment'
 //Components
 import Input from '../../Components/Form/Input/Input'
 import Button from '../../Components/Form/Button/Button'
-import {Main,Forms,Title,ImgCadastro,SpanMens} from './StyleCadastro'
+import {Main,Forms,Title,ImgCadastro,SpanMens} from './Style'
 import { Grid,Column } from '../../Components/Grid'
 import Loading from '../../Components/Loading'
 import DadosEnviados from '../../Components/DadosEnviados'

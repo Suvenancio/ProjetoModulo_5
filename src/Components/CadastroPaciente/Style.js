@@ -15,12 +15,13 @@ export const Main = styled.main`
     'title title'
     'img form';
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   padding-bottom: 10px;
   justify-content: center;
   background: #0e2940;
   text-align: center;
   border-radius: 20px;
+  margin-bottom: 20px;
 `;
 export const Forms = styled.form`
   grid-area: form;
@@ -28,6 +29,7 @@ export const Forms = styled.form`
   border-radius: 5%;
   background: #090922ad;
   padding: 10px;
+  margin-bottom: 20px;
   animation: 1s ${openMain};
 `;
 export const Title = styled.h1`
@@ -37,7 +39,8 @@ export const Title = styled.h1`
 
 export const ImgCadastro = styled.img`
   grid-area: img;
-  height: 300px;
+  height: 480px;
+  width: 565px;
   border: 1px solid #141414;
   border-radius: 10%;
   animation: 1.7s ${openMain};

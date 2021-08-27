@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const ModalBackground = styled.div` /* Hidden by default */
+const ModalBackground = styled.div`
     position: fixed; /* Fique no lugar */
     z-index: 1; /* Sente-se no topo */
     padding-top: 100px; /* Localização da caixa */
@@ -9,7 +9,7 @@ const ModalBackground = styled.div` /* Hidden by default */
     top: 0;
     width: 100%; /* Largura completa */
     height: 100%; /* Altura */
-    overflow: auto; /* Enable scroll if needed */
+    overflow: auto; 
     background-color: rgba(0,0,0,0.4);
 `
 const ModalContainer = styled.div`
@@ -32,20 +32,13 @@ const Button = styled.button`
     cursor: pointer;
     }
 `
-//Passou uma função igual props.
-export default function Modal(props) {
 
-    /* useEffect(()=>{
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${props.text}`)
-        .then(res => res.json())
-        .then(json => console.log(json.drinks))
-    },[]) */
-    
+export default function Modal(props) {
     return(
         <ModalBackground>
             <ModalContainer>
                 <Button onClick={()=>{props.setOpenModal(false)}}> X </Button>
-                {props.children}
+                {props.page}
             </ModalContainer>
         </ModalBackground>
     );

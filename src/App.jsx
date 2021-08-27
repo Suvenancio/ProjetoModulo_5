@@ -8,8 +8,6 @@ import FaleConosco from './Pages/FaleConosco/FaleConosco'; */
 
 
 //Pages
-import Login from './Pages/Login/Login'
-import CadastroPaciente from './Pages/CadastroPaciente/CadastroPaciente';
 import Modal from './Pages/ModalPage'
 
 //importando o React-Router-Dom 
@@ -21,10 +19,6 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          {/* Login */}
-          <Route exact path="/Login" children={<Login/>}/>
-          {/* Cadastro */}
-          <Route exact path="/Cadastro" children={<CadastroPaciente/>}/>
           {/* teste */}
           <Route exact path="/ModalPage" children={<Modal/>}/>
         </Switch>
