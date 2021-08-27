@@ -22,6 +22,11 @@ export const Main = styled.main`
   text-align: center;
   border-radius: 20px;
   margin-bottom: 20px;
+  @media(max-width: 868px) {
+    img{
+      display: none;
+    }
+  }
 `;
 export const Forms = styled.form`
   grid-area: form;

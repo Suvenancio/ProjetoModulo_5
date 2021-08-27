@@ -19,13 +19,18 @@ export const Main = styled.main`
   align-items: center;
   background: #090922ad;
   margin:5px 30% 5px 30%;
+  @media(max-width: 760px) {
+    margin:0;
+  }
 `
 export const Title = styled.h1`
   color: #49f2c2;
 `;
 
 export const Forms = styled.form`
-  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid #49f2c2;
   border-radius: 10px;
   background: #090922ad;
@@ -33,8 +38,7 @@ export const Forms = styled.form`
   animation: 1s ${openMain};
   margin-bottom: 20px;
   button{
-    align-items: center;
-    justify-content: center;
+    margin-top: 10px;
   }
 `;
 export const SpanMens = styled.span`

@@ -156,7 +156,7 @@ export default function CadastroPaciente(){
                             <Input type="text" name="nome" placeholder=" nome completo" onChange={handleInputChange} width="200px" height="30px">Nome: </Input>
                         </Column>
                         <Column column="2">
-                            <Input type="email" name="email" placeholder=" seuemail@email.com" onChange={handleInputChange} width="300px" height="30px">Email: </Input>
+                            <Input type="email" name="email" placeholder=" seuemail@email.com" onChange={handleInputChange} width="300px" height="30px">E-mail: </Input>
                         </Column>
                         <Column column="1">
                             <Input style={{textAlign: "center"}} type="date" name="data_nascimento" onChange={handleInputChange} width="150px" height="30px">Data de Nascimento: </Input>
@@ -178,7 +178,7 @@ export default function CadastroPaciente(){
                         </Column>
                         <Column column="1">
                         { NomeInvalido === true && <SpanMens>* Nome inválido</SpanMens>}
-                        { EmailInvalido === true && <SpanMens>* Email Inválido</SpanMens>}
+                        { EmailInvalido === true && <SpanMens>* E-mail Inválido</SpanMens>}
                         { Data_nascimentoInvalido === true && <SpanMens>* Data de Nascimento Inválida</SpanMens>}
                         { CpfInvalido === true && <SpanMens>* CPF Inválido</SpanMens>}
                         { BairroInvalido === true && <SpanMens>* Bairro Inválido</SpanMens>}

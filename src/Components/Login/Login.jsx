@@ -66,9 +66,9 @@ export default function Login(){
         return (<Main>
             <Title>Entrar: </Title>
             <Forms style={{display: "flex", flexDirection: "column"}} onSubmit={handleSubmit}>
-                <Input type="email" name="email" placeholder=" seuemail@exemplo.com" onChange={handleInputChange} width="180px" height="30px">Email: </Input>
+                <Input type="email" name="email" placeholder=" seuemail@exemplo.com" onChange={handleInputChange} width="180px" height="30px">E-mail: </Input>
                 { EmailInvalido === true && <SpanMens>* Email Inválido</SpanMens>}
-                <Input type="text" name="cpf" placeholder=" 000.000.000-00" onChange={handleInputChange} width="180px" height="30px">Cpf: </Input>
+                <Input type="text" name="cpf" placeholder=" 000.000.000-00" onChange={handleInputChange} width="180px" height="30px">CPF: </Input>
                 { CpfInvalido === true && <SpanMens>* CPF Inválido</SpanMens>}
                 <Button width="100px" height="30px" type="submit">Entrar</Button>
             </Forms>

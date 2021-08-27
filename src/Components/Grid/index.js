@@ -10,6 +10,11 @@ export const Grid = styled.div`
   button{
     margin-left: 27vh;
   }
+  @media(max-width: 868px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `
 
 export const Row = styled.div`
