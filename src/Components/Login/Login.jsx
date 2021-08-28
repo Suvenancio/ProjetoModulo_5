@@ -66,7 +66,7 @@ export default function Login(){
             setLoadPage(false)
         }else{
             console.log(json)
-            history.push(`/portal/${json.CPF}`)
+            history.push(`/portal/${json.ID}`)
         }
     }
     
