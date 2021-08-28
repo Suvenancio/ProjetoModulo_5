@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import moment from 'moment';
 
 //Components
-import Input from '../../Components/FormCadastro/Input/Input';
-import Button from '../../Components/FormCadastro/Button/Button';
+import Input from '../../Components/Form/Input';
+import Button from '../../Components/Form/Button';
 import { Main, Forms, Title, ImgCadastro, SpanMens } from './StyleCadastro';
 
 //img
@@ -163,7 +163,7 @@ export default function CadastroPaciente() {
           <Input
             type="text"
             name="nome"
-            placeholder=" nome completo"
+            placeholder="Nome completo"
             onChange={handleInputChange}
             width="300px"
             height="30px"

@@ -5,7 +5,7 @@ export const SelectForm = styled.select`
   margin-top: 10px;
   margin-left: 5px;
   cursor: pointer;
-  background-color: #013a40;
+  background-color: #090922ad;
   border-radius: 10px;
   border: 1px solid #49f2c2;
   display: flex;
@@ -16,11 +16,16 @@ export const SelectForm = styled.select`
   option {
     color: #49f2c2;
   }
+  select {
+    -webkit-appearance: menulist-button;
+    color: #49f2c2;
+  }
+  select:invalid {
+    color: green;
+  }
+
   @media (min-width: 1400px) {
     width: ${(props) => props.widthResponsive};
-  }
-  &::placeholder {
-    color: #49f2c2;
   }
 `;
 
