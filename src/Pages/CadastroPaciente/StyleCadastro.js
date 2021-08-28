@@ -57,5 +57,5 @@ export const DivButton = styled.div`
   margin-right: 130px;
 `;
 export const SpanMens = styled.span`
-  color:red;
-`
+  color: red;
+`;
