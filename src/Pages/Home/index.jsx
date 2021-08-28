@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Footer from '../../Components/Footer';
 import Header from '../../Components/Header';
 import Banner from '../../Components/Banner';
@@ -11,9 +11,17 @@ import card2Img from '../../assets/card-2-home.png';
 import card4Img from '../../assets/card-4-home.png';
 import { CardEsp, CardHome } from '../../Components/Cards/Cards.styles';
 
+//Parte Modal.
+import Modal from '../../Components/ModalContainer'
+import CadastroPaciente from '../../Components/CadastroPaciente/CadastroPaciente'
+import Login from '../../Components/Login/Login'
+
 import * as S from './styles.js';
 
 export default function Home() {
+  const [loginModal,setLoginModal] = useState(false)
+  const [cadastroModal, setCadastroModal] = useState(false)
+
   return (
     <>
       <Header />
@@ -51,17 +59,19 @@ export default function Home() {
           <S.P width="50%" size="24px">
             Faça o login e agende sua avaliação!
           </S.P>
-          <Button type="submit" height="40px" width="100px">
+          <Button onClick={()=>{setLoginModal(true)}} type="submit" height="40px" width="100px">
             Login
           </Button>
+          {loginModal && <Modal setOpenModal={setLoginModal} page={<Login/>}/>}
         </CardHome>
         <CardHome width="22.5%" height="300px">
           <S.P size="24px" width="50%">
             Cadastre-se e tenha vários benefícios!
           </S.P>
-          <Button type="submit" height="40px" width="100px">
+          <Button onClick={()=>{setCadastroModal(true)}} type="submit" height="40px" width="100px">
             Cadastrar
           </Button>
+          {cadastroModal && <Modal setOpenModal={ setCadastroModal} page={<CadastroPaciente/>}/>}
         </CardHome>
       </S.Section>
       <S.Section flexDirection="column">
