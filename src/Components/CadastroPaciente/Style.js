@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 
-//Animação
 const openMain = keyframes`
     from{
         opacity: 0;
@@ -10,52 +9,49 @@ const openMain = keyframes`
     }
 }
 `;
-//Main
 export const Main = styled.main`
   display: grid;
   grid-template-areas:
     'title title'
     'img form';
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   padding-bottom: 10px;
   justify-content: center;
   background: #0e2940;
   text-align: center;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  @media(max-width: 1125px) {
+    img{
+      display: none;
+    }
+  }
 `;
-//Forms
 export const Forms = styled.form`
   grid-area: form;
   border: 1px solid #141414;
   border-radius: 5%;
   background: #090922ad;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 20px;
   animation: 1s ${openMain};
 `;
-//titulo:
 export const Title = styled.h1`
   color: #49f2c2;
   grid-area: title;
 `;
-//Img
+
 export const ImgCadastro = styled.img`
   grid-area: img;
-  height: 550px;
+  height: 480px;
+  width: 565px;
   border: 1px solid #141414;
   border-radius: 10%;
   animation: 1.7s ${openMain};
 `;
 
-export const DivButton = styled.div`
-  display: flex;
-  flex-direction: row-reverse;
-  align-self: flex-end;
-  margin-right: 130px;
-`;
 export const SpanMens = styled.span`
-  color: red;
+  color:red;
+  font-size: 12px;
 `;
