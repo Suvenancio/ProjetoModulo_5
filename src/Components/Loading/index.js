@@ -18,6 +18,7 @@ const ImgDiv = styled.div`
     background:  #49f2c2;
     border-radius: 60%;
     padding: 10px 40px 10px 40px;
+    margin: 10px 0;
 `
 
 export default function Loading() {

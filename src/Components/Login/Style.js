@@ -13,11 +13,10 @@ const openMain = keyframes`
 export const Main = styled.main`
   display: flex;
   flex-direction: column;
+  align-items: center;
   border: 1px solid #49f2c2;
   border-radius: 10px;
-  justify-content: center;
-  align-items: center;
-  background: #090922ad;
+  background: #0e2940;
   margin:5px 30% 5px 30%;
   @media(max-width: 760px) {
     margin:0;

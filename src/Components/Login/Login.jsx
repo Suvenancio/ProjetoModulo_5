@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from "react-router-dom";
 
 //Components
 import Input from '../Form/Input/Input'
@@ -14,6 +15,8 @@ export default function Login(){
     const [cpf,setCpf] = useState("")
     const [EmailInvalido, setEmailInvalido] = useState(false)
     const [CpfInvalido,setCpfInvalido] = useState(false)
+    const [CpfEmailInvalido, setCpfEmailInvalido] = useState(false)
+    let history = useHistory();
 
     const handleInputChange = (event) =>{
         switch (event.target.name){
@@ -54,7 +57,16 @@ export default function Login(){
 
             fetch(`https://projeto-dentista-api-m4.herokuapp.com/paciente/login/email:${json.email} cpf:${json.cpf}`)
             .then(response => response.json())
-            .then(json => !json.erro.Dados )
+            .then(json => confirmaDadosEnviados(json))
+        }
+    }
+    const confirmaDadosEnviados = (json)=> {
+        if(json.erro){
+            setCpfEmailInvalido(true)
+            setLoadPage(false)
+        }else{
+            console.log(json)
+            history.push(`/portal/${json.CPF}`)
         }
     }
     
@@ -70,6 +82,7 @@ export default function Login(){
                 { EmailInvalido === true && <SpanMens>* Email Inválido</SpanMens>}
                 <Input type="text" name="cpf" placeholder=" 000.000.000-00" onChange={handleInputChange} width="180px" height="30px">CPF: </Input>
                 { CpfInvalido === true && <SpanMens>* CPF Inválido</SpanMens>}
+                { CpfEmailInvalido === true && <SpanMens>* CPF ou E-mail Inválido.</SpanMens>}
                 <Button width="100px" height="30px" type="submit">Entrar</Button>
             </Forms>
         </Main>
