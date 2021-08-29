@@ -28,10 +28,6 @@ export const Titulo = styled.h1`
   font-weight: bold;
   font-size: 42px;
   justify-self: center;
-
-  > span {
-    color: #49f2c2;
-  }
 `;
 
 export const Div = styled.div`

@@ -9,7 +9,6 @@ import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import Banner from '../../Components/Banner';
 import imgBanner from '../../assets/banner-fale.jpg';
-import TarefasTeste from '../../Components/TarefasTeste';
 
 export default function FaleConosco() {
   const [selectValue, setSelectValue] = useState('');
@@ -103,15 +102,15 @@ export default function FaleConosco() {
           </S.Div>
         </Banner>
         <S.Div display="flex" direction="row" height="620px">
-          <FormContainer>
+          <FormContainer width="60%">
             <h1>Fale conosco!</h1>
             <S.Div direction="row" display="flex" justifyContent="center">
               <Select
                 onChange={handleChange}
                 required
-                widthResponsive="400px"
+                widthResponsive="800px"
                 labelAlign="flex-start"
-                width="292px"
+                width="585px"
                 label="Estado:"
                 htmlFor="Estado"
                 name="Estado"
@@ -147,29 +146,6 @@ export default function FaleConosco() {
                 <option value="SP">São Paulo</option>
                 <option value="SE">Sergipe</option>
                 <option value="TO">Tocantins</option>
-              </Select>
-              <Select
-                onChange={handleChange}
-                widthResponsive="400px"
-                labelAlign="flex-start"
-                width="292px"
-                label="Cidade:"
-                htmlFor="Cidade"
-                name="Cidade"
-                id="cidade"
-              >
-                <option defaultvalue name="Selecione" disabled selected>
-                  Selecione
-                </option>
-                <option value="1" name="Rio de Janeiro">
-                  Rio de Janeiro
-                </option>
-                <option value="2" name="São Paulo">
-                  São Paulo
-                </option>
-                <option value="3" name="Paraná">
-                  Curitiba
-                </option>
               </Select>
             </S.Div>
             <Input
@@ -241,7 +217,7 @@ export default function FaleConosco() {
               </Button>
             </S.Div>
           </FormContainer>
-          <FormContainer>
+          <FormContainer width="60%">
             <h1>Procure uma unidade próxima a você</h1>
             <Select
               label=" Escolha a cidade que deseja encontrar uma de nossas unidades."
@@ -275,7 +251,6 @@ export default function FaleConosco() {
           </FormContainer>
         </S.Div>
       </S.Container>
-      <TarefasTeste />
       <Footer />
     </>
   );

@@ -23,6 +23,10 @@ export const SelectForm = styled.select`
   select:invalid {
     color: green;
   }
+  cursor: pointer;
+  &:hover {
+    border: 1px solid #415989;
+  }
 
   @media (min-width: 1400px) {
     width: ${(props) => props.widthResponsive};
