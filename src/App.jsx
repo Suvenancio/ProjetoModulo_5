@@ -6,6 +6,7 @@ import FaleConosco from './Pages/FaleConosco';
 
 //importando o React-Router-Dom
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Portal from './Pages/Portal';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route exact path="/faleconosco" children={<FaleConosco />} />
           {/* Cadastro */}
           <Route exact path="/Cadastro" children={<CadastroPaciente />} />
+
+          <Route exact path="/Portal" children={<Portal />} />
         </Switch>
       </Router>
     </div>

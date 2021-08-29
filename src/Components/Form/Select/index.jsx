@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const SelectForm = styled.select`
   margin-top: 10px;
@@ -22,6 +22,10 @@ export const SelectForm = styled.select`
   }
   select:invalid {
     color: green;
+  }
+  cursor: pointer;
+  &:hover {
+    border: 1px solid #415989;
   }
 
   @media (min-width: 1400px) {
