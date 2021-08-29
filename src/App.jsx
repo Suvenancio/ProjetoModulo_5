@@ -13,11 +13,17 @@ import CadastroPaciente from './Pages/CadastroPaciente/CadastroPaciente';
 
 //importando o React-Router-Dom 
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Dentista from './Components/Dentistas';
+import Header from './/Components/Header/Header'
+import Usuario from './Components/Usuário/Index';
 
 
 function App() {
-  return (
+  return (   
     <div className="App">
+  
+      <Header />
+     <Usuario />
       <Router>
         <Switch>
           {/* Login */}
