@@ -3,11 +3,13 @@ import styled, { css } from 'styled-components';
 export const Card = styled.main`
   border-radius: 20px;
   border: 0.5px solid #5ef2d7;
-  background-color: #013a40;
+  background-color: #090922ad;
   display: flex;
+  padding: 10px;
   flex-direction: row;
   color: lavender;
   margin: 15px;
+
   > img {
     width: 50%;
   }
