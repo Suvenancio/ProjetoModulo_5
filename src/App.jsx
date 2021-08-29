@@ -15,11 +15,7 @@ function App() {
           <Route exact path="/" children={<Home />} />
           {/* Fale Conosco */}
           <Route exact path="/faleconosco" children={<FaleConosco />} />
-<<<<<<< HEAD
-=======
-
           <Route exact path="/Portal" children={<Portal />} />
->>>>>>> Igor
         </Switch>
       </Router>
     </div>
