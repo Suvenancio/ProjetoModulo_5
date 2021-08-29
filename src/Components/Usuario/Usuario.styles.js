@@ -5,7 +5,7 @@ export const Main = styled.main`
     border-radius: 50px;
     border: 2px solid #5EF2D7;
     background-color: #0E2940;
-    margin: 15px;
+    margin: 35px;
     font-size: 1em;
     max-width: 30%;
     padding: 20px;
