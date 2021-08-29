@@ -6,6 +6,7 @@ export const ButtonGlobal = styled.button`
   width: ${(props) => props.width}; //150px
   height: ${(props) => props.height}; // 30px
   border-radius: 5px;
+  align-self: ${(props) => props.alignSelf};
   border: 1px solid #49f2c2;
   ${(props) =>
     props.transparent
@@ -41,6 +42,7 @@ export default function Button(props) {
   return (
     <>
       <ButtonGlobal
+        alignSelf={props.alignSelf}
         transparent={props.transparent}
         width={props.width}
         height={props.height}
