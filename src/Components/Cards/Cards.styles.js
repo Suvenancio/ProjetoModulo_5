@@ -43,6 +43,9 @@ export const CardHome = styled.div`
           `
         : ''}
   }
+  @media (max-width: 476px) {
+    width: 81%;
+  }
 `;
 
 export const CardEsp = styled.div`
@@ -72,5 +75,8 @@ export const CardEsp = styled.div`
     > div {
       margin-left: 80px;
     }
+  }
+  @media (max-width: 476px) {
+    width: 70%;
   }
 `;

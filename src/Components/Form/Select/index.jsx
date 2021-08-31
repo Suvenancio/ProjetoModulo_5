@@ -9,6 +9,7 @@ export const SelectForm = styled.select`
   border-radius: 10px;
   border: 1px solid #49f2c2;
   display: flex;
+  color: white;
   width: ${(props) => props.width};
   height: 30px;
   align-items: center;

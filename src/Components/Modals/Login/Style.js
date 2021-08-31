@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 const openMain = keyframes`
     from{
@@ -12,16 +12,17 @@ const openMain = keyframes`
 
 export const Main = styled.main`
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   border: 1px solid #49f2c2;
   border-radius: 10px;
-  background: #0e2940;
-  margin:5px 30% 5px 30%;
-  @media(max-width: 760px) {
-    margin:0;
+  background: #090922;
+  margin: 5px 30% 5px 30%;
+  @media (max-width: 760px) {
+    margin: 0;
   }
-`
+`;
 export const Title = styled.h1`
   color: #49f2c2;
 `;
@@ -30,17 +31,16 @@ export const Forms = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #49f2c2;
   border-radius: 10px;
   background: #090922ad;
   padding: 10px;
   animation: 1s ${openMain};
   margin-bottom: 20px;
-  button{
+  button {
     margin-top: 10px;
   }
 `;
 export const SpanMens = styled.span`
-  color:red;
+  color: red;
   font-size: 12px;
 `;

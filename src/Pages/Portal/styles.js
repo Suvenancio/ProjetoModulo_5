@@ -8,6 +8,9 @@ export const Section = styled.section`
   justify-content: ${(props) => props.justifyContent};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+  @media (max-width: 476px) {
+    flex-direction: column;
+  }
 `;
 
 export const Div = styled.div`
@@ -89,4 +92,10 @@ export const Titulo = styled.div`
     font-weight: bold;
   }
   font-size: ${(props) => props.fontSize};
+`;
+
+export const ModalGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
 `;

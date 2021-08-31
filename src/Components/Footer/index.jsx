@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './styles.js';
 import portal from '../../assets/portal.png';
 import linkedin from '../../assets/linkedin.png';
 import instagram from '../../assets/instagram.png';
 import facebook from '../../assets/facebook.png';
+import { useHistory } from 'react-router-dom';
+
+import Modal from '../Modals/ModalContainer';
+import CadastroPaciente from '../Modals/CadastroPaciente';
+import Login from '../Modals/Login/Login';
 
 export default function Footer() {
+  const [loginModal, setLoginModal] = useState(false);
+  const [cadastroModal, setCadastroModal] = useState(false);
+  const history = useHistory();
   return (
     <>
       <S.Footer>
@@ -21,25 +29,51 @@ export default function Footer() {
         </S.Descricao>
         <S.Nav>
           <S.Span>Acesso Rápido</S.Span>
-          <S.Link>
+          <S.Link
+            onClick={() => {
+              setLoginModal(true);
+            }}
+          >
+            {' '}
             <img src={portal} alt="portal" /> Portal do paciente
           </S.Link>
-          <S.Link>Fundadores</S.Link>
-          <S.Link>Fale Conosco</S.Link>
-          <S.Link>Login</S.Link>
-          <S.Link>Cadastre-se</S.Link>
+          {loginModal && (
+            <Modal setOpenModal={setLoginModal} page={<Login />} />
+          )}
+          <S.Link onClick={() => history.push('/fundadores')}>
+            Fundadores
+          </S.Link>
+          <S.Link onClick={() => history.push('/faleconosco')}>
+            Fale Conosco
+          </S.Link>
+          <S.Link
+            onClick={() => {
+              setCadastroModal(true);
+            }}
+          >
+            Cadastre-se
+          </S.Link>
+          {cadastroModal && (
+            <Modal
+              cadastro
+              setOpenModal={setCadastroModal}
+              page={<CadastroPaciente />}
+            />
+          )}
         </S.Nav>
         <S.Nav>
           <S.Span>Redes Sociais</S.Span>
-          <S.Link>
-            <img src={linkedin} alt="linkedin" />
-          </S.Link>
-          <S.Link>
-            <img src={facebook} alt="facebook" />
-          </S.Link>
-          <S.Link>
-            <img src={instagram} alt="instagram" />
-          </S.Link>
+          <div>
+            <S.Link>
+              <img src={linkedin} alt="linkedin" />
+            </S.Link>
+            <S.Link>
+              <img src={facebook} alt="facebook" />
+            </S.Link>
+            <S.Link>
+              <img src={instagram} alt="instagram" />
+            </S.Link>
+          </div>
         </S.Nav>
       </S.Footer>
     </>

@@ -14,5 +14,9 @@ const Form1 = styled.form`
   color: #49f2c2;
 `;
 export default function Form(props) {
-  return <Form1 width={props.width}>{props.children}</Form1>;
+  return (
+    <Form1 width={props.width} {...props}>
+      {props.children}
+    </Form1>
+  );
 }

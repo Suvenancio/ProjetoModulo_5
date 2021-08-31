@@ -9,8 +9,11 @@ import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import Banner from '../../Components/Banner';
 import imgBanner from '../../assets/banner-fale.jpg';
+import ModalFale from '../../Components/Modals/ModalFale';
+import Modal from '../../Components/Modals/Modal';
 
 export default function FaleConosco() {
+  const [modalFale, setModalFale] = useState(false);
   const [selectValue, setSelectValue] = useState('');
   const [data, setData] = useState(null);
   const [email, setEmail] = useState('');
@@ -36,9 +39,9 @@ export default function FaleConosco() {
         break;
       case 'Email':
         const regEmail = /\w@.+(.com|.com.br)$/g;
-        if (e.target.value.match(regEmail) != null) {
-          setEmail(e.target.value);
+        if (e.target.value.match(regEmail) !== null) {
           setEInvalid(false);
+          setEmail(e.target.value);
         } else {
           setEInvalid(true);
         }
@@ -65,8 +68,11 @@ export default function FaleConosco() {
     }
   };
   const handleSubmit = (e) => {
+    console.log(mensagem);
     e.preventDefault();
-    if ((nome, email, assunto, mensagem)) {
+    if (nome && email && assunto) {
+      console.log('caiu');
+      setModalFale(true);
     }
   };
   const requisicaoUnidade = async (e) => {
@@ -101,154 +107,155 @@ export default function FaleConosco() {
             </S.Titulo>
           </S.Div>
         </Banner>
-        <S.Div display="flex" direction="row" height="620px">
-          <FormContainer width="60%">
-            <h1>Fale conosco!</h1>
-            <S.Div direction="row" display="flex" justifyContent="center">
-              <Select
+        <S.Div>
+          <div>
+            <FormContainer onSubmit={handleSubmit}>
+              <h1>Fale conosco!</h1>
+              <S.Div>
+                <Select
+                  required
+                  widthResponsive="800px"
+                  labelAlign="flex-start"
+                  width="585px"
+                  label="Estado:"
+                  htmlFor="Estado"
+                  name="Estado"
+                  id="estado"
+                >
+                  <option defaultvalue name="Selecione" disabled selected>
+                    Selecione
+                  </option>
+                  <option value="AC">Acre</option>
+                  <option value="AL">Alagoas</option>
+                  <option value="AP">Amapá</option>
+                  <option value="AM">Amazonas</option>
+                  <option value="BA">Bahia</option>
+                  <option value="CE">Ceará</option>
+                  <option value="DF">Distrito Federal</option>
+                  <option value="ES">Espírito Santo</option>
+                  <option value="GO">Goiás</option>
+                  <option value="MA">Maranhão</option>
+                  <option value="MT">Mato Grosso</option>
+                  <option value="MS">Mato Grosso do Sul</option>
+                  <option value="MG">Minas Gerais</option>
+                  <option value="PA">Pará</option>
+                  <option value="PB">Paraíba</option>
+                  <option value="PR">Paraná</option>
+                  <option value="PE">Pernambuco</option>
+                  <option value="PI">Piauí</option>
+                  <option value="RJ">Rio de Janeiro</option>
+                  <option value="RN">Rio Grande do Norte</option>
+                  <option value="RS">Rio Grande do Sul</option>
+                  <option value="RO">Rondônia</option>
+                  <option value="RR">Roraima</option>
+                  <option value="SC">Santa Catarina</option>
+                  <option value="SP">São Paulo</option>
+                  <option value="SE">Sergipe</option>
+                  <option value="TO">Tocantins</option>
+                </Select>
+              </S.Div>
+              <Input
                 onChange={handleChange}
-                required
-                widthResponsive="800px"
-                labelAlign="flex-start"
                 width="585px"
-                label="Estado:"
-                htmlFor="Estado"
-                name="Estado"
-                id="estado"
-              >
-                <option defaultvalue name="Selecione" disabled selected>
-                  Selecione
-                </option>
-                <option value="AC">Acre</option>
-                <option value="AL">Alagoas</option>
-                <option value="AP">Amapá</option>
-                <option value="AM">Amazonas</option>
-                <option value="BA">Bahia</option>
-                <option value="CE">Ceará</option>
-                <option value="DF">Distrito Federal</option>
-                <option value="ES">Espírito Santo</option>
-                <option value="GO">Goiás</option>
-                <option value="MA">Maranhão</option>
-                <option value="MT">Mato Grosso</option>
-                <option value="MS">Mato Grosso do Sul</option>
-                <option value="MG">Minas Gerais</option>
-                <option value="PA">Pará</option>
-                <option value="PB">Paraíba</option>
-                <option value="PR">Paraná</option>
-                <option value="PE">Pernambuco</option>
-                <option value="PI">Piauí</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="RN">Rio Grande do Norte</option>
-                <option value="RS">Rio Grande do Sul</option>
-                <option value="RO">Rondônia</option>
-                <option value="RR">Roraima</option>
-                <option value="SC">Santa Catarina</option>
-                <option value="SP">São Paulo</option>
-                <option value="SE">Sergipe</option>
-                <option value="TO">Tocantins</option>
-              </Select>
-            </S.Div>
-            <Input
-              onChange={handleChange}
-              width="585px"
-              widthResponsive="800px"
-              height="30px"
-              htmlFor="Assunto"
-              type="text"
-              nome="Assunto:"
-              name="Assunto"
-              placeholder="Digite aqui"
-            >
-              Assunto:
-            </Input>
-            {assuntoInvalid && <S.Error>Assunto inválido</S.Error>}
-            <Input
-              onChange={handleChange}
-              width="585px"
-              widthResponsive="800px"
-              height="30px"
-              nome="Nome:"
-              htmlFor="Nome"
-              placeholder="Digite seu nome"
-              name="Nome"
-              type="text"
-            >
-              Nome:
-            </Input>
-            {nomeInvalid && <S.Error>Nome inválido</S.Error>}
-            <Input
-              widthResponsive="800px"
-              onChange={handleChange}
-              width="585px"
-              height="30px"
-              nome="Email:"
-              htmlFor="Email"
-              placeholder="Digite seu email"
-              name="Email"
-              type="email"
-            >
-              Email:
-            </Input>
-            {eInvalid && <S.Error>E-mail inválido</S.Error>}
-            <Textarea
-              onChange={handleChange}
-              width="585px"
-              htmlFor="Mensagem"
-              placeholder="Digite sua mensagem"
-              name="Mensagem"
-              type="text"
-            >
-              Mensagem:
-            </Textarea>
-            {mensagemInvalid && <S.Error>Mensagem inválida</S.Error>}
-            <S.Div
-              display="flex"
-              direction="row-reverse"
-              alignSelf="center"
-              margin="0px 77px 0px 0px"
-            >
-              <Button
-                width="150px"
+                widthResponsive="800px"
                 height="30px"
-                type="submit"
-                onSubmit={handleChange}
+                htmlFor="Assunto"
+                type="text"
+                nome="Assunto:"
+                name="Assunto"
+                placeholder="Digite aqui"
               >
-                Enviar
-              </Button>
-            </S.Div>
-          </FormContainer>
-          <FormContainer width="60%">
-            <h1>Procure uma unidade próxima a você</h1>
-            <Select
-              label=" Escolha a cidade que deseja encontrar uma de nossas unidades."
-              htmlFor="Cidade unidade"
-              onChange={requisicaoUnidade}
-              width="585px"
-              labelAlign="center"
-            >
-              <option>Selecione</option>
-              <option value="Rio de Janeiro">Rio de Janeiro</option>
-              <option value="São Paulo">São Paulo</option>
-              <option value="Curitiba">Curitiba</option>
-            </Select>
+                Assunto:
+              </Input>
+              {assuntoInvalid && <S.Error>Assunto inválido</S.Error>}
+              <Input
+                onChange={handleChange}
+                width="585px"
+                widthResponsive="800px"
+                height="30px"
+                nome="Nome:"
+                htmlFor="Nome"
+                placeholder="Digite seu nome"
+                name="Nome"
+                type="text"
+              >
+                Nome:
+              </Input>
+              {nomeInvalid && <S.Error>Nome inválido</S.Error>}
+              <Input
+                widthResponsive="800px"
+                onChange={handleChange}
+                width="585px"
+                height="30px"
+                nome="Email:"
+                htmlFor="Email"
+                placeholder="Digite seu email"
+                name="Email"
+                type="email"
+              >
+                Email:
+              </Input>
+              {eInvalid && <S.Error>E-mail inválido</S.Error>}
+              <Textarea
+                onChange={handleChange}
+                width="585px"
+                htmlFor="Mensagem"
+                placeholder="Digite sua mensagem"
+                name="Mensagem"
+                type="text"
+              >
+                Mensagem:
+              </Textarea>
+              {mensagemInvalid && <S.Error>Mensagem inválida</S.Error>}
+              <S.Div
+                display="flex"
+                direction="row-reverse"
+                alignSelf="center"
+                margin="0px 77px 0px 0px"
+              >
+                <Button width="150px" height="30px" type="submit">
+                  Enviar
+                </Button>
+                {modalFale && (
+                  <Modal setOpenModal={setModalFale} page={<ModalFale />} />
+                )}
+              </S.Div>
+            </FormContainer>
+          </div>
+          <div>
+            <FormContainer>
+              <h1>Procure uma unidade próxima a você</h1>
+              <Select
+                label=" Escolha a cidade que deseja encontrar uma de nossas unidades."
+                htmlFor="Cidade unidade"
+                onChange={requisicaoUnidade}
+                width="585px"
+                labelAlign="center"
+              >
+                <option>Selecione</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Curitiba">Curitiba</option>
+              </Select>
 
-            <S.Div scroll="active">
-              <S.Lista>
-                {data &&
-                  data.map((item, index) =>
-                    item.address.includes(selectValue) ? (
-                      <li key={index}>
-                        <p>Endereço: {item.address}</p>
-                        <p>Email: {item.email}</p>
-                        <p>Telefone: {item.phone}</p>
-                      </li>
-                    ) : (
-                      ''
-                    )
-                  )}
-              </S.Lista>
-            </S.Div>
-          </FormContainer>
+              <S.Div scroll="active">
+                <S.Lista>
+                  {data &&
+                    data.map((item, index) =>
+                      item.address.includes(selectValue) ? (
+                        <li key={index}>
+                          <p>Endereço: {item.address}</p>
+                          <p>Email: {item.email}</p>
+                          <p>Telefone: {item.phone}</p>
+                        </li>
+                      ) : (
+                        ''
+                      )
+                    )}
+                </S.Lista>
+              </S.Div>
+            </FormContainer>
+          </div>
         </S.Div>
       </S.Container>
       <Footer />

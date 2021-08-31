@@ -10,6 +10,7 @@ const openMain = keyframes`
 }
 `;
 export const Main = styled.main`
+  border: 1px solid #49f2c2;
   display: grid;
   grid-template-areas:
     'title title'
@@ -22,8 +23,8 @@ export const Main = styled.main`
   text-align: center;
   border-radius: 20px;
   margin-bottom: 20px;
-  @media(max-width: 1125px) {
-    img{
+  @media (max-width: 1125px) {
+    img {
       display: none;
     }
   }
@@ -52,6 +53,6 @@ export const ImgCadastro = styled.img`
 `;
 
 export const SpanMens = styled.span`
-  color:red;
+  color: red;
   font-size: 12px;
 `;
