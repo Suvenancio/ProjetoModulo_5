@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import FormContainer from '../../Components/Form/FormContainer';
@@ -25,7 +25,6 @@ export default function Portal() {
 
   /* const {usuario} = useContext(Context) */
   const cpf = 0;
-
 
   useEffect(() => {
     fetch('http://damp-journey-22615.herokuapp.com/dentista')
