@@ -35,6 +35,8 @@ export default function Input(props) {
           height={props.height}
           name={props.name}
           onChange={props.onChange}
+          onClick={props.onClick}
+          value={props.value}
           className={props.className}
           style={props.style}
           placeholder={props.placeholder}
