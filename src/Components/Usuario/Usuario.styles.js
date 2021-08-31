@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const Main = styled.main`
+export const Main = styled.div`
     border-radius: 50px;
     border: 2px solid #5EF2D7;
     background-color: #0E2940;
@@ -28,9 +28,11 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
     }
+ }  
 
- }
-    
-
+`
+export const Button = styled.div`
+    display: flex;
+    justify-content: space-around;
 
 `
