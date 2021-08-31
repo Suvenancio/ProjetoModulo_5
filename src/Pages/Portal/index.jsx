@@ -8,6 +8,7 @@ import Select from '../../Components/Form/Select';
 import Button from '../../Components/Form/Button';
 import Banner from '../../Components/Banner';
 import imgBanner from '../../assets/banner-portal.png';
+import Usuario from '../../Components/Usuario';
 
 export default function Portal() {
   const [selectValue, setSelectValue] = useState('');
@@ -57,6 +58,7 @@ export default function Portal() {
             <S.Titulo fontSize="42px">Portal do paciente</S.Titulo>
           </S.Div>
         </Banner>
+        
         <S.Section>
           <S.Div flexDirection="column" width="50%">
             <S.Titulo padding="10px" fontSize="24px">
@@ -68,6 +70,7 @@ export default function Portal() {
               height="300px"
               width="100%"
             >
+              
               <S.Lista width="95%" height="100%">
                 <li>
                   <p>Data:</p>
@@ -76,9 +79,13 @@ export default function Portal() {
                   <p>Descricao:</p>
                 </li>
               </S.Lista>
+              
             </S.Div>
+            
           </S.Div>
+          <Usuario />
         </S.Section>
+        
         <S.Section height="500px" flexDirection="column">
           <S.Titulo fontSize="24px" width="100%" padding="10px">
             <p>Agendamento de consultas</p>
