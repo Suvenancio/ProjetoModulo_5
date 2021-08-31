@@ -33,6 +33,7 @@ export default function Input(props) {
       <LabelForm htmlFor={props.htmlFor}>
         {props.children}
         <InputForm
+          value={props.value}
           widthResponsive={props.widthResponsive}
           type={props.type}
           width={props.width}

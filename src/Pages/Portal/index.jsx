@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import FormContainer from '../../Components/Form/FormContainer';
@@ -12,6 +12,9 @@ import Usuario from '../../Components/Usuario';
 import Modal from '../../Components/Modals/Modal/';
 import styled from 'styled-components';
 
+//Context - Pegar dados paciente.
+/* import {Context} from '../../Components/ValidaLogin/Context' */
+
 export default function Portal() {
   const [selectValue, setSelectValue] = useState('');
   const [data, setData] = useState(null);
@@ -20,7 +23,11 @@ export default function Portal() {
   const [semDesconto, setSemDesconto] = useState(true);
   const [avaliacaoFeita, setAvaliacaoFeita] = useState(false);
   const [modal, setModal] = useState(false);
+
+  /* const {usuario} = useContext(Context) */
   const cpf = 0;
+
+
   useEffect(() => {
     fetch('http://damp-journey-22615.herokuapp.com/dentista')
       .then((res) => res.json())
