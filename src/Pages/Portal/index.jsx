@@ -9,6 +9,8 @@ import Button from '../../Components/Form/Button';
 import Banner from '../../Components/Banner';
 import imgBanner from '../../assets/banner-portal.png';
 import Usuario from '../../Components/Usuario';
+import Modal from '../../Components/Modals/Modal/';
+import styled from 'styled-components';
 
 export default function Portal() {
   const [selectValue, setSelectValue] = useState('');
@@ -17,6 +19,7 @@ export default function Portal() {
   const [comDesconto, setComDesconto] = useState(false);
   const [semDesconto, setSemDesconto] = useState(true);
   const [avaliacaoFeita, setAvaliacaoFeita] = useState(false);
+  const [modal, setModal] = useState(false);
   const cpf = 0;
   useEffect(() => {
     fetch('http://damp-journey-22615.herokuapp.com/dentista')
@@ -42,6 +45,51 @@ export default function Portal() {
   const handleChange = (e) => {
     setSelectValue(e.target.value);
   };
+
+  const Texto = () => {
+    return (
+      <S.ModalGroup>
+        <Input>De 0 a 10 o quanto você avalia o nosso atendimento?</Input>;
+        <Input>
+          De 0 a 10 o quanto você recomendaria nosso atendimento a um amigo?
+        </Input>
+        <Button
+          onClick={() => {
+            setModal(false);
+            setAvaliacaoFeita(true);
+            setComDesconto(true);
+            setSemDesconto(false);
+          }}
+          width="100px"
+          height="30px"
+          alignSelf="center"
+        >
+          Enviar
+        </Button>
+      </S.ModalGroup>
+    );
+  };
+
+  const P = styled.p`
+    padding: 0 20px;
+    font-size: 1.5rem;
+    color: #49f2c2;
+    font-weight: bold;
+  `;
+
+  const TextoAgradecimento = () => {
+    return <P>Obrigado por nos avaliar!</P>;
+  };
+
+  const ModalAvaliacao = () => {
+    return <Modal setOpenModal={setModal} page={<Texto />} />;
+  };
+
+  const ModalAgradecimento = () => {
+    return (
+      <Modal setOpenModal={setAvaliacaoFeita} page={<TextoAgradecimento />} />
+    );
+  };
   return (
     <div>
       <Header />
@@ -58,7 +106,7 @@ export default function Portal() {
             <S.Titulo fontSize="42px">Portal do paciente</S.Titulo>
           </S.Div>
         </Banner>
-        
+
         <S.Section>
           <S.Div flexDirection="column" width="50%">
             <S.Titulo padding="10px" fontSize="24px">
@@ -70,7 +118,6 @@ export default function Portal() {
               height="300px"
               width="100%"
             >
-              
               <S.Lista width="95%" height="100%">
                 <li>
                   <p>Data:</p>
@@ -79,13 +126,11 @@ export default function Portal() {
                   <p>Descricao:</p>
                 </li>
               </S.Lista>
-              
             </S.Div>
-            
           </S.Div>
           <Usuario />
         </S.Section>
-        
+
         <S.Section height="500px" flexDirection="column">
           <S.Titulo fontSize="24px" width="100%" padding="10px">
             <p>Agendamento de consultas</p>
@@ -243,20 +288,15 @@ export default function Portal() {
               )}
             </S.Lista>
           </S.Div>
+          {modal && ModalAvaliacao()}
+          {avaliacaoFeita && ModalAgradecimento()}
           <S.Div width="50%" alignSelf="flex-start" justifyContent="center">
-            {!avaliacaoFeita && (
-              <S.Titulo aConsulta fontSize="28px" flexDirection="column">
-                <p>Faça aqui sua avaliação</p>
-                <Button onClick={avaliacao} height="30px">
-                  Avaliar
-                </Button>
-              </S.Titulo>
-            )}
-            {avaliacaoFeita && (
-              <S.Titulo aConsulta fontSize="28px">
-                <p>Obrigado por nos avaliar !</p>
-              </S.Titulo>
-            )}
+            <S.Titulo aConsulta fontSize="28px" flexDirection="column">
+              <p>Faça aqui sua avaliação</p>
+              <Button onClick={() => setModal(true)} height="30px">
+                Avaliar
+              </Button>
+            </S.Titulo>
           </S.Div>
         </S.Section>
       </S.Container>

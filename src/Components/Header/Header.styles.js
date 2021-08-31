@@ -19,6 +19,7 @@ export const Nav = styled.nav`
 `;
 export const Link = styled.a`
   padding: 20px;
+  cursor: pointer;
   > img {
     justify-content: center;
   }

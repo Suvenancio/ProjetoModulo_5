@@ -18,6 +18,15 @@ export const Section = styled.section`
   justify-content: space-around;
   align-items: center;
   background-color: rgba(14, 41, 64);
+  @media (max-width: 476px) {
+    flex-direction: column;
+    height: 1200px;
+    :nth-child(2n) {
+      justify-content: center;
+
+      height: 2000px;
+    }
+  }
 `;
 
 export const DivDesenho = styled.div`
@@ -54,10 +63,20 @@ export const BalaoHome = styled.div`
       margin-right: 25%;
     }
   }
+  @media (max-width: 476px) {
+    width: 41%;
+    left: 50%;
+    top: 78%;
+  }
 `;
 export const DivCard = styled.div`
   display: flex;
   justify-content: space-around;
+  @media (max-width: 476px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 export const Div = styled.div`
   display: flex;

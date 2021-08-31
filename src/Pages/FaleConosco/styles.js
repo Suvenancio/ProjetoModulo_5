@@ -8,57 +8,104 @@ export const Container = styled.main`
 `;
 
 export const Lista = styled.ul`
+  align-items: center;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 90%;
 
   li {
-    margin-right: 20px;
+    align-self: center;
     background-color: #090922ad;
-    width: 100%;
     border: 1px solid #49f2c2;
     border-radius: 10px;
-    align-self: center;
-    margin-bottom: 10px;
     font-weight: bold;
     list-style: none;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    width: 100%;
   }
 `;
 export const Titulo = styled.h1`
   color: #49f2c2;
-  font-weight: bold;
   font-size: 42px;
+  font-weight: bold;
   justify-self: center;
 `;
 
 export const Div = styled.div`
+  align-items: center;
   background: ${(props) => props.background};
-  display: ${(props) => props.display};
-  flex-direction: ${(props) => props.direction};
-  justify-content: ${(props) => props.justifyContent};
-  align-self: ${(props) => props.alignSelf};
-  align-items: ${(props) => props.alignItems};
-  margin: ${(props) => props.margin};
-  width: 100%;
+  display: flex;
+  flex-direction: row;
   height: ${(props) => props.height};
+  justify-content: center;
+  margin: ${(props) => props.margin};
+  padding: 30px 0;
+  width: 100%;
+  @media (max-width: 476px) {
+    flex-direction: column;
+    height: auto;
+  }
   ${(props) =>
     props.scroll === 'active'
       ? css`
           overflow-y: scroll;
           &::-webkit-scrollbar {
-            width: 10px;
-            border-radius: 5px;
             background-color: #49f2c2;
             border: 1px solid #49f2c2;
+            border-radius: 5px;
+            width: 10px;
           }
         `
       : ''}
+
+  div {
+    @media (max-width: 1024px) {
+      label {
+        width: 300px !important;
+      }
+      input {
+        width: 300px !important;
+      }
+      select {
+        width: 300px !important;
+      }
+      textarea {
+        width: 300px !important;
+      }
+    }
+    @media (max-width: 476px) {
+      label {
+        width: 300px !important;
+      }
+      input {
+        width: 300px !important;
+      }
+      select {
+        width: 300px !important;
+      }
+      textarea {
+        width: 300px !important;
+      }
+    }
+  }
+
+  div + div {
+    border-left: 1px solid #49f2c2;
+    margin-left: 40px;
+    @media (max-width: 476px) {
+      border: none;
+    }
+  }
 `;
 export const Error = styled.span`
-  color: red;
-  font-weight: bold;
-  font-size: 14px;
-  text-shadow: 1px 1px black;
-  line-height: 1rem;
   align-self: flex-start;
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1rem;
   margin-left: 50px;
+  text-shadow: 1px 1px black;
 `;

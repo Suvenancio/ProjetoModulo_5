@@ -1,6 +1,8 @@
 //Pages
 import Home from './Pages/Home';
 import FaleConosco from './Pages/FaleConosco';
+import Dentistas from './Pages/Dentistas';
+import Fundadores from './Pages/Fundadores';
 
 //importando o React-Router-Dom
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -11,11 +13,11 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          {/* Home */}
           <Route exact path="/" children={<Home />} />
-          {/* Fale Conosco */}
           <Route exact path="/faleconosco" children={<FaleConosco />} />
-          <Route exact path="/Portal" children={<Portal />} />
+          <Route exact path="/dentistas" children={<Dentistas />} />
+          <Route exact path="/portal" children={<Portal />} />
+          <Route exact path="/fundadores" children={<Fundadores />} />
         </Switch>
       </Router>
     </div>

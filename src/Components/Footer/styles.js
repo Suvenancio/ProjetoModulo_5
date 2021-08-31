@@ -9,6 +9,17 @@ export const Footer = styled.footer`
   font-family: 'Work Sans', sans-serif;
   color: whitesmoke;
   font-size: 1.2em;
+  @media (max-width: 476px) {
+    flex-direction: column;
+    height: 580px;
+    nav {
+      display: none;
+      :last-child {
+        display: flex;
+        width: 95%;
+      }
+    }
+  }
 `;
 
 export const Nav = styled.nav`
@@ -17,6 +28,24 @@ export const Nav = styled.nav`
   flex-direction: column;
   justify-self: flex-end;
   align-items: flex-start;
+  @media (max-width: 476px) {
+    ::first-child {
+      display: none;
+    }
+    span {
+      margin-bottom: 10px;
+      margin-top: 0;
+      align-self: center;
+    }
+    div {
+      align-items: center;
+      align-self: center;
+      flex-direction: row;
+      img {
+        width: 50px;
+      }
+    }
+  }
 `;
 export const Descricao = styled.div`
   display: flex;
@@ -31,9 +60,19 @@ export const Descricao = styled.div`
     width: 70%;
     text-align: start;
   }
+  @media (max-width: 476px) {
+    align-items: center;
+
+    margin: 0;
+
+    p {
+      text-align: center;
+    }
+  }
 `;
 export const Link = styled.a`
   padding: 5px;
+  cursor: pointer;
   > img {
     justify-content: center;
   }

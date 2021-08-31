@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Footer from '../../Components/Footer';
 import Header from '../../Components/Header';
 import Banner from '../../Components/Banner';
@@ -12,15 +12,17 @@ import card4Img from '../../assets/card-4-home.png';
 import { CardEsp, CardHome } from '../../Components/Cards/Cards.styles';
 
 //Parte Modal.
-import Modal from '../../Components/ModalContainer'
-import CadastroPaciente from '../../Components/CadastroPaciente/CadastroPaciente'
-import Login from '../../Components/Login/Login'
+import Modal from '../../Components/Modals/ModalContainer';
+import CadastroPaciente from '../../Components/Modals/CadastroPaciente';
+import Login from '../../Components/Modals/Login/Login';
 
 import * as S from './styles.js';
+import { useHistory } from 'react-router-dom';
 
 export default function Home() {
-  const [loginModal,setLoginModal] = useState(false)
-  const [cadastroModal, setCadastroModal] = useState(false)
+  const [loginModal, setLoginModal] = useState(false);
+  const [cadastroModal, setCadastroModal] = useState(false);
+  const history = useHistory();
 
   return (
     <>
@@ -45,7 +47,13 @@ export default function Home() {
             Nós temos médicos de todos os departamentos para deixar ainda mais
             perfeito a curva mais bonita do ser humano: o SORRISO!
           </S.P>
-          <Button transparent height="50px">
+          <Button
+            onClick={() => {
+              history.push('/dentistas');
+            }}
+            transparent
+            height="50px"
+          >
             Conheça nossos doutores!
           </Button>
         </CardHome>
@@ -59,19 +67,41 @@ export default function Home() {
           <S.P width="50%" size="24px">
             Faça o login e agende sua avaliação!
           </S.P>
-          <Button onClick={()=>{setLoginModal(true)}} type="submit" height="40px" width="100px">
+          <Button
+            onClick={() => {
+              setLoginModal(true);
+            }}
+            type="submit"
+            height="40px"
+            width="100px"
+          >
             Login
           </Button>
-          {loginModal && <Modal setOpenModal={setLoginModal} page={<Login/>}/>}
+          {loginModal && (
+            <Modal setOpenModal={setLoginModal} page={<Login />} />
+          )}
         </CardHome>
         <CardHome width="22.5%" height="300px">
           <S.P size="24px" width="50%">
             Cadastre-se e tenha vários benefícios!
           </S.P>
-          <Button onClick={()=>{setCadastroModal(true)}} type="submit" height="40px" width="100px">
+          <Button
+            onClick={() => {
+              setCadastroModal(true);
+            }}
+            type="submit"
+            height="40px"
+            width="100px"
+          >
             Cadastrar
           </Button>
-          {cadastroModal && <Modal setOpenModal={ setCadastroModal} page={<CadastroPaciente/>}/>}
+          {cadastroModal && (
+            <Modal
+              cadastro
+              setOpenModal={setCadastroModal}
+              page={<CadastroPaciente />}
+            />
+          )}
         </CardHome>
       </S.Section>
       <S.Section flexDirection="column">
@@ -135,7 +165,14 @@ export default function Home() {
           <h1>Novas unidades em:</h1>
           <h2>Paraná</h2>
           <h2>São Paulo</h2>
-          <Button width="160px" height="40px" type="submit">
+          <Button
+            onClick={() => {
+              history.push('/faleconosco');
+            }}
+            width="160px"
+            height="40px"
+            type="submit"
+          >
             Encontre Uma Unidade
           </Button>
         </CardHome>
