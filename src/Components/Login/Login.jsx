@@ -1,13 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import { useHistory } from "react-router-dom";
 
 //Components
 import Input from '../Form/Input'
 import Button from '../Form/Button'
 
+
 //Style
 import {Main,Title,Forms,SpanMens} from './Style'
 import Loading from '../Loading'
+
+//Login
+import {Context} from '../ValidaLogin/Context'
 
 export default function Login(){
     const [LoadPage,setLoadPage] = useState(false)
@@ -16,7 +20,15 @@ export default function Login(){
     const [EmailInvalido, setEmailInvalido] = useState(false)
     const [CpfInvalido,setCpfInvalido] = useState(false)
     const [CpfEmailInvalido, setCpfEmailInvalido] = useState(false)
+
     let history = useHistory();
+    
+    
+    const {setToken,setUsuario} = useContext(Context)
+
+    /* const setLoadingValid = useContext(Context)
+    console.log(setLoadingValid) */
+    
 
     const handleInputChange = (event) =>{
         switch (event.target.name){
@@ -42,7 +54,7 @@ export default function Login(){
                 throw new Error('Campo Invalido')
         }
     }
-    const handleSubmit = (event) =>{
+    const onSubmit = (event) =>{
         event.preventDefault()
         if(email === "" && cpf === ""){
             setEmailInvalido(true)
@@ -65,11 +77,12 @@ export default function Login(){
             setCpfEmailInvalido(true)
             setLoadPage(false)
         }else{
-            console.log(json)
-            history.push(`/portal/${json.ID}`)
+            setUsuario(json)
+            setToken(true)
+            history.push('/ModalPage')
         }
     }
-    
+
     if(LoadPage){
         return(<>
             <Loading/>
@@ -77,7 +90,7 @@ export default function Login(){
     }else{
         return (<Main>
             <Title>Entrar: </Title>
-            <Forms style={{display: "flex", flexDirection: "column"}} onSubmit={handleSubmit}>
+            <Forms style={{display: "flex", flexDirection: "column"}} onSubmit={onSubmit}>
                 <Input type="email" name="email" placeholder=" seuemail@exemplo.com" onChange={handleInputChange} width="180px" height="30px">E-mail: </Input>
                 { EmailInvalido === true && <SpanMens>* Email Inválido</SpanMens>}
                 <Input type="text" name="cpf" placeholder=" 000.000.000-00" onChange={handleInputChange} width="180px" height="30px">CPF: </Input>
