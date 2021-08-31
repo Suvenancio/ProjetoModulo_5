@@ -22,6 +22,7 @@ function App() {
           <Route exact path="/faleconosco" children={<FaleConosco />} />
           <Route exact path="/dentistas" children={<Dentistas />} />
           <RoutePrivat exact path="/portal/*" component={Portal} />
+          <RoutePrivat exact path="/portal" component={<Portal />} />
           <Route exact path="/fundadores" children={<Fundadores />} />
           <Route exact path="*" children={<Page404 />} />
         </Switch>
