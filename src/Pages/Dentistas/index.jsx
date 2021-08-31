@@ -1,15 +1,16 @@
-import Card from '../Cards/Card'
-import { useState } from 'react';
+import Card from '../../Components/Cards';
+import { useEffect, useState } from 'react';
 import * as S from './Dentistas.styles';
-import Select from '../Form/Select/Select'
-
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
+import Banner from '../../Components/Banner';
+import imgBanner from '../../assets/banner-dentistas.jpg';
+import Select from '../../Components/Form/Select'
 
 const Dentistas = () => {
-
-    const [api, setApi] = useState([]);
-    const [select, setSelect] = useState('');
-    const [ apiChegou, setApichegou] = useState(false)
-
+  const [api, setApi] = useState([]);
+  const [apiChegou, setApichegou] = useState(false);
+  const [select, setSelect] = useState('');
 
   const request = async (e)=>{
     let cidade = e.target.value;
@@ -22,11 +23,28 @@ const Dentistas = () => {
                 setSelect(cidade)
                 setApichegou(true)
             })
-     }       
+     }  
 
-    return(
+  return (
+    <>
+      <Header />
+      <Banner
+        bannerPositionResponsive="atendimento"
+        opacity="0.5"
+        bannerPosition="top center"
+        url={imgBanner}
+      >
+        <S.Div
+          alignItems="center"
+          display="flex"
+          justifyContent="center"
+          background="rgba(0,0,0,0.7)"
+        >
+          <S.Titulo>Dentistas</S.Titulo>
+        </S.Div>
+      </Banner>
 
-         <S.Main >
+          <S.Main>
             <Select
                 onChange={request}
                 label="Selecione sua cidade e veja os dentistas conveniados"
@@ -38,7 +56,7 @@ const Dentistas = () => {
                 <option value="São Paulo">São Paulo</option>
                
             </Select>
-        <S.Container>
+         <S.Container>
             {
             !!api && apiChegou ? (
                 api.map((item) => {
@@ -53,9 +71,11 @@ const Dentistas = () => {
             ) : (null)
             }
         </S.Container>  
-         </S.Main>      
-       
-    )
-}
+        </S.Main>
+      
+      <Footer />
+    </>
+  );
+};
 
-export default Dentistas
+export default Dentistas;
