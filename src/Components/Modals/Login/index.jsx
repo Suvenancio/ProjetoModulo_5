@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 //Components
@@ -10,7 +10,7 @@ import { Main, Title, Forms, SpanMens } from './Style';
 import Loading from '../../Loading';
 
 //Context - Login
-import {Context} from '../../ValidaLogin/Context'
+import { Context } from '../../ValidaLogin/Context';
 
 export default function Login() {
   const [LoadPage, setLoadPage] = useState(false);
@@ -21,7 +21,7 @@ export default function Login() {
   const [CpfEmailInvalido, setCpfEmailInvalido] = useState(false);
   let history = useHistory();
 
-  const {setLogado,setUsuario} = useContext(Context)
+  const { setLogado, setUsuario } = useContext(Context);
 
   const handleInputChange = (event) => {
     switch (event.target.name) {
@@ -70,9 +70,9 @@ export default function Login() {
       setCpfEmailInvalido(true);
       setLoadPage(false);
     } else {
-      setUsuario(json)
-      setLogado(true)
-      history.push('/portal')
+      setUsuario(json);
+      setLogado(true);
+      history.push(`/portal/${json.ID}`);
     }
   };
 

@@ -12,8 +12,7 @@ import Usuario from '../../Components/Usuario';
 import Modal from '../../Components/Modals/Modal/';
 import styled from 'styled-components';
 
-//Context - Pegar dados paciente.
-/* import {Context} from '../../Components/ValidaLogin/Context' */
+import { Context } from '../../Components/ValidaLogin/Context';
 
 export default function Portal() {
   const [selectValue, setSelectValue] = useState('');
@@ -24,8 +23,7 @@ export default function Portal() {
   const [avaliacaoFeita, setAvaliacaoFeita] = useState(false);
   const [modal, setModal] = useState(false);
 
-  /* const {usuario} = useContext(Context) */
-  const cpf = 0;
+  const { usuario } = useContext(Context);
 
   useEffect(() => {
     fetch('http://damp-journey-22615.herokuapp.com/dentista')
@@ -35,19 +33,14 @@ export default function Portal() {
       });
   }, []);
   useEffect(() => {
-    fetch(`https://consulta-paciente.herokuapp.com/consultas/${cpf}`)
+    fetch(`https://consulta-paciente.herokuapp.com/consultas/${usuario.CPF}`)
       .then((res) => res.json())
       .then((result) => {
         setConsultas(result);
+        console.log(result, 'oi');
       });
-  }, []);
+  }, [usuario.CPF]);
 
-  const avaliacao = (e) => {
-    e.preventDefault();
-    setComDesconto(true);
-    setSemDesconto(false);
-    setAvaliacaoFeita(true);
-  };
   const handleChange = (e) => {
     setSelectValue(e.target.value);
   };
@@ -125,12 +118,15 @@ export default function Portal() {
               width="100%"
             >
               <S.Lista width="95%" height="100%">
-                <li>
-                  <p>Data:</p>
-                  <p>Hora:</p>
-                  <p>Dentista:</p>
-                  <p>Descricao:</p>
-                </li>
+                {/* {consultas &&
+                  consultas.map((item, index) => (
+                    <li key={index}>
+                      <p>Data:{item.DATA_CONSULTA}</p>
+                      <p>Hora:{item.HORA}</p>
+                      <p>Dentista:{item.NOME_DR}</p>
+                      <p>Descricao:{item.DESCRICAO}</p>
+                    </li>
+                  ))} */}
               </S.Lista>
             </S.Div>
           </S.Div>
@@ -144,7 +140,7 @@ export default function Portal() {
             <FormContainer width="65%">
               <Select
                 onChange={handleChange}
-                widthResponsive="400px"
+                widthResponsive="600px"
                 labelAlign="flex-start"
                 width="585px"
                 label="Cidade:"
@@ -166,7 +162,7 @@ export default function Portal() {
                 </option>
               </Select>
               <Select
-                widthResponsive="400px"
+                widthResponsive="600px"
                 labelAlign="flex-start"
                 width="585px"
                 label=" Dentista:"
@@ -198,7 +194,7 @@ export default function Portal() {
               </S.Div>
               <Select
                 onChange={handleChange}
-                widthResponsive="400px"
+                widthResponsive="600px"
                 labelAlign="flex-start"
                 width="585px"
                 label="Tipo de Consulta:"
@@ -229,13 +225,19 @@ export default function Portal() {
                   Especialista em Disfunção Temporomandibular e dor orofacial
                 </option>
               </Select>
-              <Button width="80px" height="30px" alignSelf="flex-end">
+              <Button
+                marginResponsive="0 172px 0 0"
+                width="80px"
+                height="30px"
+                alignSelf="flex-end"
+              >
                 Enviar
               </Button>
             </FormContainer>
             <S.Div width="60%" height="100%" justifyContent="center">
               <S.Titulo
                 width="55%"
+                widthResponsive="45%"
                 height="100%"
                 padding="15px"
                 background="#090922ad"
@@ -251,57 +253,63 @@ export default function Portal() {
             </S.Div>
           </S.Div>
         </S.Section>
-        <S.Section height="500px">
-          <S.Div width="50%" flexDirection="column" height="475px">
-            <S.Titulo fontSize="24px">
-              <p>Cupons de Descontos</p>
-            </S.Titulo>
-            <S.Lista pCentro widthItem="250px">
-              {semDesconto && (
-                <>
-                  <li>
-                    <p>
-                      Avalie-nos e ganhe cupons de desconto para utilizar na
-                      hora de pagar o seu tratamento!
-                    </p>
-                  </li>
-                </>
-              )}
-              {comDesconto && (
-                <>
-                  <li>
-                    <h1>ae324y</h1>
-                    <p>5%</p>
-                    <p>Válido até 10/11</p>
-                  </li>
-                  <li>
-                    <h1>23es87a</h1>
-                    <p>5%</p>
-                    <p>Válido até 10/11</p>
-                  </li>
-                  <li>
-                    <h1>3usa71</h1>
-                    <p>10%</p>
-                    <p>Válido até 10/11</p>
-                  </li>
-                  <li>
-                    <h1>j432sv</h1>
-                    <p>15%</p>
-                    <p>Válido até 10/11</p>
-                  </li>
-                </>
-              )}
-            </S.Lista>
-          </S.Div>
-          {modal && ModalAvaliacao()}
-          {avaliacaoFeita && ModalAgradecimento()}
-          <S.Div width="50%" alignSelf="flex-start" justifyContent="center">
-            <S.Titulo aConsulta fontSize="28px" flexDirection="column">
-              <p>Faça aqui sua avaliação</p>
-              <Button onClick={() => setModal(true)} height="30px">
-                Avaliar
-              </Button>
-            </S.Titulo>
+        <S.Section height="500px" flexDirection="column">
+          <S.Titulo fontSize="24px" width="100%" padding="10px">
+            <p>Benefícios</p>
+          </S.Titulo>
+          <S.Div justifyContent="space-between">
+            <S.Div width="50%" flexDirection="column" height="475px">
+              <S.Titulo fontSize="24px">
+                <p>Cupons de Descontos</p>
+              </S.Titulo>
+
+              <S.Lista pCentro widthItem="250px">
+                {semDesconto && (
+                  <>
+                    <li>
+                      <p>
+                        Avalie-nos e ganhe cupons de desconto para utilizar na
+                        hora de pagar o seu tratamento!
+                      </p>
+                    </li>
+                  </>
+                )}
+                {comDesconto && (
+                  <>
+                    <li>
+                      <h1>ae324y</h1>
+                      <p>5%</p>
+                      <p>Válido até 10/11</p>
+                    </li>
+                    <li>
+                      <h1>23es87a</h1>
+                      <p>5%</p>
+                      <p>Válido até 10/11</p>
+                    </li>
+                    <li>
+                      <h1>3usa71</h1>
+                      <p>10%</p>
+                      <p>Válido até 10/11</p>
+                    </li>
+                    <li>
+                      <h1>j432sv</h1>
+                      <p>15%</p>
+                      <p>Válido até 10/11</p>
+                    </li>
+                  </>
+                )}
+              </S.Lista>
+            </S.Div>
+            {modal && ModalAvaliacao()}
+            {avaliacaoFeita && ModalAgradecimento()}
+            <S.Div width="50%" alignSelf="flex-start" justifyContent="center">
+              <S.Titulo aConsulta fontSize="28px" flexDirection="column">
+                <p>Faça aqui sua avaliação</p>
+                <Button onClick={() => setModal(true)} height="30px">
+                  Avaliar
+                </Button>
+              </S.Titulo>
+            </S.Div>
           </S.Div>
         </S.Section>
       </S.Container>

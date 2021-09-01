@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const openMain = keyframes`
+    from{
+        opacity: 0;
+        transform: translateX(-20px)
+    }to{
+        opacity: 1;
+    }
+}
+`;
 
 export const Container = styled.div`
   background-color: #0e2940;
@@ -6,6 +16,7 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 20px;
+  animation: 1s ${openMain};
 `;
 export const Div = styled.div`
   align-items: center;

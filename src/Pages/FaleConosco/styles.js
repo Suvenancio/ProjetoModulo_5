@@ -1,10 +1,21 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const openMain = keyframes`
+    from{
+        opacity: 0;
+        transform: translateX(-20px)
+    }to{
+        opacity: 1;
+    }
+}
+`;
 
 export const Container = styled.main`
   background-color: rgba(14, 41, 64);
   display: flex;
   flex-direction: column;
   text-align: center;
+  animation: 1s ${openMain};
 `;
 
 export const Lista = styled.ul`

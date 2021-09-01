@@ -18,6 +18,7 @@ export const Main = styled.main`
   border: 1px solid #49f2c2;
   border-radius: 10px;
   background: #090922;
+  animation: 1s ${openMain};
   margin: 5px 30% 5px 30%;
   @media (max-width: 760px) {
     margin: 0;

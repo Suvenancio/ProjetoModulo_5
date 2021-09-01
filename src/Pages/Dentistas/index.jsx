@@ -37,7 +37,6 @@ const Dentistas = () => {
           <S.Titulo>Dentistas</S.Titulo>
         </S.Div>
       </Banner>
-
       <S.Container>
         {!!api && apiChegou ? (
           api.map((item) => (

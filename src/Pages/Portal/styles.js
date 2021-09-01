@@ -1,6 +1,17 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const openMain = keyframes`
+    from{
+        opacity: 0;
+        transform: translateX(-20px)
+    }to{
+        opacity: 1;
+    }
+}
+`;
 export const Container = styled.main`
   background-color: rgba(14, 41, 64);
+  animation: 1s ${openMain};
 `;
 export const Section = styled.section`
   display: flex;
@@ -76,6 +87,9 @@ export const Titulo = styled.div`
   align-self: center;
   margin-bottom: 15px;
   color: #49f2c2;
+  @media (min-width: 1400px) {
+    width: ${(props) => props.widthResponsive};
+  }
 
   p {
     padding: ${(props) => props.padding};
@@ -84,6 +98,7 @@ export const Titulo = styled.div`
       props.aConsulta
         ? css`
             border: none;
+            padding: 15px;
             line-height: 1.5;
           `
         : ''}

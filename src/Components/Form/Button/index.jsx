@@ -36,6 +36,9 @@ export const ButtonGlobal = styled.button`
     position: relative;
     top: 1px;
   }
+  @media (min-width: 1400px) {
+    margin: ${(props) => props.marginResponsive};
+  }
 `;
 
 export default function Button(props) {
@@ -44,6 +47,7 @@ export default function Button(props) {
       <ButtonGlobal
         alignSelf={props.alignSelf}
         transparent={props.transparent}
+        marginResponsive={props.marginResponsive}
         width={props.width}
         height={props.height}
         type={props.type}

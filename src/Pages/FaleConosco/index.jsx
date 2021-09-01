@@ -213,7 +213,16 @@ export default function FaleConosco() {
                 alignSelf="center"
                 margin="0px 77px 0px 0px"
               >
-                <Button width="150px" height="30px" type="submit">
+                <Button
+                  width="150px"
+                  height="30px"
+                  type="submit"
+                  onSubmit={handleChange}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setModalFale(true);
+                  }}
+                >
                   Enviar
                 </Button>
                 {modalFale && (

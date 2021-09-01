@@ -14,7 +14,7 @@ import { CardEsp, CardHome } from '../../Components/Cards/Cards.styles';
 //Parte Modal.
 import Modal from '../../Components/Modals/ModalContainer';
 import CadastroPaciente from '../../Components/Modals/CadastroPaciente';
-import Login from '../../Components/Modals/Login/Login';
+import Login from '../../Components/Modals/Login';
 
 import * as S from './styles.js';
 import { useHistory } from 'react-router-dom';
