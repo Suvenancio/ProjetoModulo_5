@@ -1,5 +1,23 @@
 import styled from 'styled-components';
 
+export const GridContainer = styled.main`
+  display: grid;
+
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+  grid-template-rows: 80px 1800px 250px;
+  > header {
+    grid-area: header;
+  }
+  > main {
+    grid-area: content;
+  }
+  > footer {
+    grid-area: footer;
+  }
+`;
 export const P = styled.p`
   width: ${(props) => props.width};
   font-style: ${(props) => (props.serif ? 'italic' : '')};
@@ -13,6 +31,7 @@ export const P = styled.p`
 
 export const Section = styled.section`
   height: 550px;
+
   display: flex;
   flex-direction: ${(props) => props.flexDirection};
   justify-content: space-around;

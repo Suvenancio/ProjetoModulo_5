@@ -1,4 +1,25 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const openMain = keyframes`
+    from{
+        opacity: 0;
+        transform: translateX(-20px)
+    }to{
+        opacity: 1;
+    }
+}
+`;
+export const Main = styled.main`
+  background-color: #0e2940;
+  color: #49f2c2;
+  min-height: 269px;
+  > label {
+    align-items: center;
+    font-size: 1.5em;
+    padding: 10px;
+    justify-content: space-between;
+  }
+`;
 
 export const Container = styled.div`
   background-color: #0e2940;
@@ -6,6 +27,7 @@ export const Container = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 20px;
+  animation: 1s ${openMain};
 `;
 export const Div = styled.div`
   align-items: center;
@@ -17,6 +39,7 @@ export const Div = styled.div`
   margin: ${(props) => props.margin};
   padding: 30px 0;
   width: 100%;
+  animation: 1s ${openMain};
   @media (max-width: 476px) {
     flex-direction: column;
     height: auto;

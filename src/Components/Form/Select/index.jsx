@@ -32,6 +32,9 @@ export const SelectForm = styled.select`
   @media (min-width: 1400px) {
     width: ${(props) => props.widthResponsive};
   }
+  @media (max-width: 460px) {
+    width: 300px;
+  }
 `;
 
 export const LabelForm = styled.label`

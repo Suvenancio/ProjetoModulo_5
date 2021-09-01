@@ -1,6 +1,34 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const openMain = keyframes`
+    from{
+        opacity: 0;
+        transform: translateX(-20px)
+    }to{
+        opacity: 1;
+    }
+}
+`;
+export const GridContainer = styled.main`
+  display: grid;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+  grid-template-rows: 80px 1900px 250px;
+  > header {
+    grid-area: header;
+  }
+  > main {
+    grid-area: content;
+  }
+  > footer {
+    grid-area: footer;
+  }
+`;
 export const Container = styled.main`
   background-color: rgba(14, 41, 64);
+  animation: 1s ${openMain};
 `;
 export const Section = styled.section`
   display: flex;
@@ -10,6 +38,11 @@ export const Section = styled.section`
   height: ${(props) => props.height};
   @media (max-width: 476px) {
     flex-direction: column;
+
+    height: 900px;
+    :last-child {
+      height: 1200px;
+    }
   }
 `;
 
@@ -32,6 +65,18 @@ export const Div = styled.div`
           }
         `
       : ''};
+
+  @media (max-width: 476px) {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    ${(props) =>
+      props.beneficios
+        ? css`
+            flex-direction: column-reverse;
+          `
+        : ''};
+  }
 `;
 
 export const Lista = styled.ul`
@@ -76,6 +121,9 @@ export const Titulo = styled.div`
   align-self: center;
   margin-bottom: 15px;
   color: #49f2c2;
+  @media (min-width: 1400px) {
+    width: ${(props) => props.widthResponsive};
+  }
 
   p {
     padding: ${(props) => props.padding};
@@ -84,6 +132,7 @@ export const Titulo = styled.div`
       props.aConsulta
         ? css`
             border: none;
+            padding: 15px;
             line-height: 1.5;
           `
         : ''}
@@ -98,4 +147,5 @@ export const ModalGroup = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 20px;
+  animation: 1s ${openMain};
 `;

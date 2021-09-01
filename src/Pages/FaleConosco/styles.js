@@ -1,10 +1,38 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const openMain = keyframes`
+    from{
+        opacity: 0;
+        transform: translateX(-20px)
+    }to{
+        opacity: 1;
+    }
+}
+`;
+export const GridContainer = styled.main`
+  display: grid;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+  grid-template-rows: 80px 1180px 250px;
+  > header {
+    grid-area: header;
+  }
+  > main {
+    grid-area: content;
+  }
+  > footer {
+    grid-area: footer;
+  }
+`;
 
 export const Container = styled.main`
   background-color: rgba(14, 41, 64);
   display: flex;
   flex-direction: column;
   text-align: center;
+  animation: 1s ${openMain};
 `;
 
 export const Lista = styled.ul`
@@ -40,7 +68,7 @@ export const Div = styled.div`
   display: flex;
   flex-direction: row;
   height: ${(props) => props.height};
-  justify-content: center;
+  justify-content: ${(props) => props.justifyContent};
   margin: ${(props) => props.margin};
   padding: 30px 0;
   width: 100%;
@@ -95,6 +123,7 @@ export const Div = styled.div`
   div + div {
     border-left: 1px solid #49f2c2;
     margin-left: 40px;
+    height: 100%;
     @media (max-width: 476px) {
       border: none;
     }

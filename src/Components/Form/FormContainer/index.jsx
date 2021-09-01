@@ -8,7 +8,7 @@ const Form1 = styled.form`
   padding: 5px;
   align-items: center;
   flex-direction: column;
-  border-left: 1px solid #49f2c2;
+  /* border-left: 1px solid #49f2c2; */
   width: ${(props) => props.width};
   height: 100%;
   color: #49f2c2;
