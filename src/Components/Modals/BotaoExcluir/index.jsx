@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Button from '../../Form/Button';
 import { useHistory } from 'react-router-dom';
 import { Context } from '../../ValidaLogin/Context';
+import * as S from './BtnExcluir.styles';
 
 const Excluir = () => {
   const { setUsuario, setLogado, usuario } = useContext(Context);
@@ -26,11 +27,12 @@ const Excluir = () => {
   };
 
   return (
-    <div>
-      <p> Tem certeza que deseja excluir seu cadastro?</p>
-      <Button onClick={exclui}>Sim</Button>
-      <Button onClick={() => history.push('/portal')}>Cancelar</Button>
-    </div>
+    <>
+      <S.Texto>
+        <p> Tem certeza que deseja excluir seu cadastro?</p>
+        <Button onClick={exclui}>Sim</Button>
+      </S.Texto>
+    </>
   );
 };
 

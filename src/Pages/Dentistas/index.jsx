@@ -1,5 +1,5 @@
 import Card from '../../Components/Cards';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as S from './Dentistas.styles';
 import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
