@@ -17,8 +17,8 @@ export const Nav = styled.nav`
   justify-content: flex-end;
   align-items: center;
 `;
-export const Link = styled.a`
-  padding: 20px;
+export const Link = styled.p`
+  padding: 10px;
   cursor: pointer;
   > img {
     justify-content: center;

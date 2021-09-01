@@ -22,6 +22,7 @@ export default function Portal() {
   const [semDesconto, setSemDesconto] = useState(true);
   const [avaliacaoFeita, setAvaliacaoFeita] = useState(false);
   const [modal, setModal] = useState(false);
+  const [pedidoFeito, setPedidoFeito] = useState(false);
 
   const { usuario } = useContext(Context);
 
@@ -36,7 +37,7 @@ export default function Portal() {
     fetch(`https://consulta-paciente.herokuapp.com/consultas/${usuario.CPF}`)
       .then((res) => res.json())
       .then((result) => {
-        setConsultas(result);
+        setConsultas([result]);
         console.log(result, 'oi');
       });
   }, [usuario.CPF]);
@@ -75,13 +76,24 @@ export default function Portal() {
     color: #49f2c2;
     font-weight: bold;
   `;
+  const PedidoConsulta = () => {
+    return (
+      <S.ModalGroup>
+        <P>Pedido de agendamento confirmado!</P>
+        <P>Dentro de 48hrs enviaremos um e-mail de confirmação para você.</P>
+      </S.ModalGroup>
+    );
+  };
 
   const TextoAgradecimento = () => {
     return <P>Obrigado por nos avaliar!</P>;
   };
-
   const ModalAvaliacao = () => {
     return <Modal setOpenModal={setModal} page={<Texto />} />;
+  };
+
+  const ModalPedidoConsulta = () => {
+    return <Modal setOpenModal={setPedidoFeito} page={<PedidoConsulta />} />;
   };
 
   const ModalAgradecimento = () => {
@@ -90,7 +102,7 @@ export default function Portal() {
     );
   };
   return (
-    <div>
+    <S.GridContainer>
       <Header />
 
       <S.Container>
@@ -106,7 +118,8 @@ export default function Portal() {
           </S.Div>
         </Banner>
 
-        <S.Section>
+        <S.Section justifyContent="center">
+          <Usuario />
           <S.Div flexDirection="column" width="50%">
             <S.Titulo padding="10px" fontSize="24px">
               <p>Consultas</p>
@@ -118,7 +131,7 @@ export default function Portal() {
               width="100%"
             >
               <S.Lista width="95%" height="100%">
-                {/* {consultas &&
+                {consultas &&
                   consultas.map((item, index) => (
                     <li key={index}>
                       <p>Data:{item.DATA_CONSULTA}</p>
@@ -126,18 +139,23 @@ export default function Portal() {
                       <p>Dentista:{item.NOME_DR}</p>
                       <p>Descricao:{item.DESCRICAO}</p>
                     </li>
-                  ))} */}
+                  ))}
               </S.Lista>
             </S.Div>
           </S.Div>
-          <Usuario />
         </S.Section>
-        <S.Section height="500px" flexDirection="column">
+        <S.Section height="455px" flexDirection="column">
           <S.Titulo fontSize="24px" width="100%" padding="10px">
             <p>Agendamento de consultas</p>
           </S.Titulo>
           <S.Div justifyContent="space-around">
-            <FormContainer width="65%">
+            <FormContainer
+              onSubmit={(e) => {
+                e.preventDefault();
+                setPedidoFeito(true);
+              }}
+              width="65%"
+            >
               <Select
                 onChange={handleChange}
                 widthResponsive="600px"
@@ -226,6 +244,7 @@ export default function Portal() {
                 </option>
               </Select>
               <Button
+                type="submit"
                 marginResponsive="0 172px 0 0"
                 width="80px"
                 height="30px"
@@ -234,9 +253,9 @@ export default function Portal() {
                 Enviar
               </Button>
             </FormContainer>
-            <S.Div width="60%" height="100%" justifyContent="center">
+            <S.Div width="55%" height="100%" justifyContent="center">
               <S.Titulo
-                width="55%"
+                width="60%"
                 widthResponsive="45%"
                 height="100%"
                 padding="15px"
@@ -253,17 +272,17 @@ export default function Portal() {
             </S.Div>
           </S.Div>
         </S.Section>
-        <S.Section height="500px" flexDirection="column">
+        <S.Section height="630px" flexDirection="column">
           <S.Titulo fontSize="24px" width="100%" padding="10px">
             <p>Benefícios</p>
           </S.Titulo>
-          <S.Div justifyContent="space-between">
+          <S.Div beneficios justifyContent="space-between">
             <S.Div width="50%" flexDirection="column" height="475px">
               <S.Titulo fontSize="24px">
                 <p>Cupons de Descontos</p>
               </S.Titulo>
 
-              <S.Lista pCentro widthItem="250px">
+              <S.Lista width="100%" pCentro widthItem="250px">
                 {semDesconto && (
                   <>
                     <li>
@@ -302,6 +321,7 @@ export default function Portal() {
             </S.Div>
             {modal && ModalAvaliacao()}
             {avaliacaoFeita && ModalAgradecimento()}
+            {pedidoFeito && ModalPedidoConsulta()}
             <S.Div width="50%" alignSelf="flex-start" justifyContent="center">
               <S.Titulo aConsulta fontSize="28px" flexDirection="column">
                 <p>Faça aqui sua avaliação</p>
@@ -314,6 +334,6 @@ export default function Portal() {
         </S.Section>
       </S.Container>
       <Footer />
-    </div>
+    </S.GridContainer>
   );
 }

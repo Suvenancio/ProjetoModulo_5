@@ -28,6 +28,7 @@ export const Div = styled.div`
   margin: ${(props) => props.margin};
   padding: 30px 0;
   width: 100%;
+  animation: 1s ${openMain};
   @media (max-width: 476px) {
     flex-direction: column;
     height: auto;

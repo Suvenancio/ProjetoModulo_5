@@ -62,7 +62,10 @@ export default function Login() {
         `https://projeto-dentista-api-m4.herokuapp.com/paciente/login/email:${json.email} cpf:${json.cpf}`
       )
         .then((response) => response.json())
-        .then((json) => confirmaDadosEnviados(json));
+        .then((json) => {
+          console.log(json, 'aqui');
+          confirmaDadosEnviados(json);
+        });
     }
   };
   const confirmaDadosEnviados = (json) => {

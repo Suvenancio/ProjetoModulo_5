@@ -40,7 +40,6 @@ export default function Input(props) {
           height={props.height}
           name={props.name}
           onClick={props.onClick}
-          value={props.value}
           onChange={props.onChange}
           className={props.className}
           style={props.style}

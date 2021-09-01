@@ -28,6 +28,15 @@ export const Nav = styled.nav`
   flex-direction: column;
   justify-self: flex-end;
   align-items: flex-start;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 10px;
+  }
+  img {
+    cursor: pointer;
+  }
   @media (max-width: 476px) {
     ::first-child {
       display: none;
@@ -42,7 +51,7 @@ export const Nav = styled.nav`
       align-self: center;
       flex-direction: row;
       img {
-        width: 50px;
+        justify-content: center;
       }
     }
   }
@@ -68,14 +77,14 @@ export const Descricao = styled.div`
     p {
       text-align: center;
     }
+
+    > img {
+    }
   }
 `;
-export const Link = styled.a`
-  padding: 5px;
+export const Link = styled.p`
+  height: 3px;
   cursor: pointer;
-  > img {
-    justify-content: center;
-  }
 `;
 
 export const Span = styled.span`

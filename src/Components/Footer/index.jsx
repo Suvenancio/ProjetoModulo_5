@@ -30,6 +30,7 @@ export default function Footer() {
               sorriso, inclusive grandes negócios.
             </p>
           </S.Descricao>
+
           <S.Nav>
             <S.Span>Acesso Rápido</S.Span>
             <S.Link
@@ -67,15 +68,11 @@ export default function Footer() {
           <S.Nav>
             <S.Span>Redes Sociais</S.Span>
             <div>
-              <S.Link>
-                <img src={linkedin} alt="linkedin" />
-              </S.Link>
-              <S.Link>
-                <img src={facebook} alt="facebook" />
-              </S.Link>
-              <S.Link>
-                <img src={instagram} alt="instagram" />
-              </S.Link>
+              <img src={linkedin} alt="linkedin" />
+
+              <img src={facebook} alt="facebook" />
+
+              <img src={instagram} alt="instagram" />
             </div>
           </S.Nav>
         </S.Footer>
@@ -120,9 +117,8 @@ export default function Footer() {
           <S.Nav>
             <S.Span>Redes Sociais</S.Span>
             <div>
-              <S.Link>
-                <img src={linkedin} alt="linkedin" />
-              </S.Link>
+              <img src={linkedin} alt="linkedin" />
+
               <S.Link>
                 <img src={facebook} alt="facebook" />
               </S.Link>

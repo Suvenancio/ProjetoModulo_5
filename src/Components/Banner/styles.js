@@ -11,6 +11,7 @@ const openMain = keyframes`
 `;
 
 export const Container = styled.section`
+  font-family: Arial, Helvetica, sans-serif;
   background-image: url(${(props) => props.url});
   opacity: ${(props) => props.opacity};
   background-size: cover;
