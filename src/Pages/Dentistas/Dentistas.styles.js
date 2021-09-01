@@ -9,6 +9,17 @@ const openMain = keyframes`
     }
 }
 `;
+export const Main = styled.main`
+  background-color: #0e2940;
+  color: #49f2c2;
+  min-height: 269px;
+  > label {
+    align-items: center;
+    font-size: 1.5em;
+    padding: 10px;
+    justify-content: space-between;
+  }
+`;
 
 export const Container = styled.div`
   background-color: #0e2940;

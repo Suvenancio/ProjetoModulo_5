@@ -5,19 +5,24 @@ import Header from '../../Components/Header';
 import Footer from '../../Components/Footer';
 import Banner from '../../Components/Banner';
 import imgBanner from '../../assets/banner-dentistas.jpg';
+import Select from '../../Components/Form/Select';
+
 const Dentistas = () => {
   const [api, setApi] = useState([]);
   const [apiChegou, setApichegou] = useState(false);
+  const [select, setSelect] = useState('');
 
-  useEffect(() => {
-    fetch('https://damp-journey-22615.herokuapp.com/dentista')
+  const request = async (e) => {
+    let cidade = e.target.value;
+    let res = await fetch('http://damp-journey-22615.herokuapp.com/dentista')
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
         setApi(result);
+        setSelect(cidade);
         setApichegou(true);
       });
-  }, []);
+  };
 
   return (
     <>
@@ -37,20 +42,36 @@ const Dentistas = () => {
           <S.Titulo>Dentistas</S.Titulo>
         </S.Div>
       </Banner>
-      <S.Container>
-        {!!api && apiChegou ? (
-          api.map((item) => (
-            <Card
-              foto={item.FOTO}
-              nome={item.NOME}
-              especialidade={item.ESPECIALIDADE}
-              cro={item.CRO}
-            />
-          ))
-        ) : (
-          <p>Erro ao carregar!</p>
-        )}
-      </S.Container>
+
+      <S.Main>
+        <Select
+          onChange={request}
+          label="Selecione sua cidade e veja os dentistas conveniados"
+          width="400px"
+        >
+          <option>Selecione</option>
+          <option value="Curitiba">Curitiba</option>
+          <option value="Rio de Janeiro">Rio de Janeiro</option>
+          <option value="São Paulo">São Paulo</option>
+        </Select>
+        <S.Container>
+          {!!api && apiChegou
+            ? api.map((item) => {
+                if (item.CIDADE.includes(select)) {
+                  return (
+                    <Card
+                      foto={item.FOTO}
+                      nome={item.NOME}
+                      especialidade={item.ESPECIALIDADE}
+                      cro={item.CRO}
+                    />
+                  );
+                }
+              })
+            : null}
+        </S.Container>
+      </S.Main>
+
       <Footer />
     </>
   );

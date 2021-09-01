@@ -8,7 +8,7 @@ export const Main = styled.div`
   font-size: 1em;
   max-width: 30%;
   padding: 20px;
-  color: #5ef2d7;
+  color: #49f2c2;
   font-size: 1em;
   font-family: 'Varela Round', sans-serif;
   > img {
