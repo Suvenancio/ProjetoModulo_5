@@ -3,13 +3,12 @@ import * as S from './Usuario.styles';
 import foto from '../../assets/pessoa.png';
 import Button from '../Form/Button';
 import Input from '../Form/Input';
-import { useHistory } from 'react-router-dom';
 import Modal from '../Modals/ModalContainer';
 import BotaoExcluir from '../Modals/BotaoExcluir';
 import { Context } from '../ValidaLogin/Context';
+
 const Usuario = () => {
   const { usuario } = useContext(Context);
-  const history = useHistory();
   const [isVisible, setIsVisible] = useState(false);
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
@@ -37,7 +36,7 @@ const Usuario = () => {
         setCidade(result.CIDADE);
         setTelefone(result.TELEFONE);
       });
-  }, []);
+  }, [usuario.CPF]);
 
   const edit = async (e) => {
     e.preventDefault();
@@ -89,7 +88,7 @@ const Usuario = () => {
 
   return (
     <S.Main>
-      {status.type == 'success' ? <p>Cadastro alterado com sucesso</p> : null}
+      {status.type === 'success' ? <p>Cadastro alterado com sucesso</p> : null}
       <S.Container>
         <img src={foto} alt="foto-usuario" />
         <form onSubmit={edit}>
