@@ -122,7 +122,7 @@ export default function Portal() {
           <Usuario />
           <S.Div flexDirection="column" width="50%">
             <S.Titulo padding="10px" fontSize="24px">
-              <p>Consultas</p>
+              <p>Histórico de Consultas</p>
             </S.Titulo>
             <S.Div
               scroll="active"

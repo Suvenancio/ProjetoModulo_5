@@ -72,7 +72,6 @@ export default function FaleConosco() {
     console.log(mensagem);
     e.preventDefault();
     if (nome && email && assunto) {
-      console.log('caiu');
       setModalFale(true);
     }
   };
