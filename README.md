@@ -6,7 +6,7 @@
 - [ ] Basta da um *Git Clone*
 
 <!--  -->  Ou acesse o seguinte link abaixo:
-[https://objective-shaw-050cd7.netlify.app/](url "Titulo")
+https://objective-shaw-050cd7.netlify.app/
 
 
 
@@ -44,8 +44,6 @@ npm start
 
 <!--  --> Páginas:
 
-
-
 > Cadastro\Paciente
 > > Pagina feita para o usuário inserir seus dados e efetuar o seu cadastro no sistema.Nessa página foi feita uma requiçao`POST` para enviar dados através do fetch para o banco de dados SQLize.
 <!--  --> Post:É um método de requisição onde os dados sensíveis dos usuários são protegidos
@@ -68,7 +66,7 @@ como suas histórias e competênncias
 > > Pagina dedidcada a novos clientes que podem se logar mediante a um cadastro para conhecer um pouco mais do que temos a oferecer
 
 > Portal do Paciente
-> > Página  reservada para o cliente ter acesso exclusivo aos nossos servidos oferecido,novas funcionlidades e sugestões de melhorias
+> > Página  reservada para o cliente ter acesso exclusivo aos nossos servidos oferecendo assistência e sugestões de melhorias
 
 
 
