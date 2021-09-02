@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+😃 Olá Mundo!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!--  --> Apresentação do projeto Dental Pride,uma rede de clinicas odontológica que ofereçe serviços de qualidade para diversos clientes espalhados pelo Brasil á fora.Nesse projeto temos a integração do backend com o frontend,tal integração é feita com tecnologias como o Node js mais voltada para o back rodando ao lado do servidor e o React js uma lib frontend mais voltada para o aspecto visual do site orientada a componente isto é, são como funções que aceitam propriedades e retornam novos elementos
 
-## Available Scripts
+<!--  --> Caso queira ter acesso a nossa aplicação siga os seguntes passos
+- [ ] Basta da um *Git Clone*
 
-In the project directory, you can run:
+<!--  -->  Ou acesse o seguinte link abaixo:
+[https://objective-shaw-050cd7.netlify.app/](url "Titulo")
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Inicio do projeto
+<!--  --> Primeiro passo criar nosso projetinho no React js usando o comando abaixo
 
-### `npm test`
+## npx create-react-app my-app
+cd my-app
+npm start
+---
+**NPM START**
+<!--  --> Inicia o projeto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Apis envolvidas no projeto
+<!--  --> Api são um conjunto de rotinas e padrões que facilitam a comunicação e troca de informações entre sistemas.
+---
+- [ ] Api de consulta
+- [ ] Api do Médico
+- [ ] Api do Paciente
+- [ ] Api da Rede de lojas
 
-### `npm run build`
+# Montagem das paginas 
+---
+| Page         
+| ---  ---    
+| `Home`
+| `Cadastro\Paciente`
+| `Contato` 
+| `Dentista`  
+| `Fale conosco`  
+| `Fundadores` 
+| `Login` 
+| `Portal do Paciente`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<!--  --> Páginas:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+> Cadastro\Paciente
+> > Pagina feita para o usuário inserir seus dados e efetuar o seu cadastro no sistema.Nessa página foi feita uma requiçao`POST` para enviar dados através do fetch para o banco de dados SQLize.
+<!--  --> Post:É um método de requisição onde os dados sensíveis dos usuários são protegidos
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> Pagina Dentista:
+> > Nessa pagina foi ultilizado **Hook useEffect** que é um Hook que serve para lidar com os efeitos, no caso da nossa página queremos destacar o efeito de busca da nossa Api com a finalidade de listar os dentistas que estão presentes na rede.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+> Hook:
+> > nos ajudam a organizar a lógica que será usada em um componente
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+> Pagina Fale conosco :
+> > Pagina que tem por finalidade conectar o usuário ao suporte de atendimento.Nessa página foi ultilizado**Hook useState** que  cria uma variável que controlará o estado do componente.Para este Hook nós passamos os valores  do estado, em nosso exemplo como retorno temos a variável com o valor do estado, que demos o nome de nome,data,email,assunto e mensagem e uma função que serve unicamente para atualizar o valor desta variável,que demos o nome de setNome()
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> > Pagina dos Fundadores
+> > Pagina em que os clientes pode conhecer nosso time de colaboderes,assim
+como suas histórias e competênncias
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> Pagina de Login
+> > Pagina dedidcada a novos clientes que podem se logar mediante a um cadastro para conhecer um pouco mais do que temos a oferecer
 
-### Code Splitting
+> Portal do Paciente
+> > Página  reservada para o cliente ter acesso exclusivo aos nossos servidos oferecido,novas funcionlidades e sugestões de melhorias
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
