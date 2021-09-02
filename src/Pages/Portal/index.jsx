@@ -166,7 +166,7 @@ export default function Portal() {
                 name="Cidade"
                 id="cidade"
               >
-                <option defaultvalue name="Selecione" selected>
+                <option defaultvalue="" name="Selecione" selected>
                   Selecione
                 </option>
                 <option value="Rio de Janeiro" name="Rio de Janeiro">
@@ -188,7 +188,7 @@ export default function Portal() {
                 name="Dentista"
                 id="dentista"
               >
-                <option defaultvalue name="Selecione">
+                <option defaultvalue="" name="Selecione">
                   Selecione
                 </option>
                 {data &&
@@ -220,7 +220,7 @@ export default function Portal() {
                 name="Consulta"
                 id="consulta"
               >
-                <option value="defaultvalue">Selecione</option>
+                <option defaultvalue="">Selecione</option>
                 <option value="Clínico geral">Clínico geral</option>
                 <option value="Odontopediatra">Odontopediatra</option>
                 <option value="Ortodontista">Ortodontista</option>

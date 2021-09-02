@@ -15,7 +15,7 @@ export const GridContainer = styled.main`
     'header'
     'content'
     'footer';
-  grid-template-rows: 80px 1900px 250px;
+  grid-template-rows: 100px 1900px 250px;
   > header {
     grid-area: header;
   }

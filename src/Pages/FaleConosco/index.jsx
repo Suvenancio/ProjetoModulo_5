@@ -20,6 +20,7 @@ export default function FaleConosco() {
   const [assunto, setAssunto] = useState('');
   const [nome, setNome] = useState('');
   const [mensagem, setMensagem] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const [nomeInvalid, setNomeInvalid] = useState(false);
   const [eInvalid, setEInvalid] = useState(false);
@@ -77,6 +78,7 @@ export default function FaleConosco() {
   };
   const requisicaoUnidade = async (e) => {
     let cidade = e.target.value;
+    setLoading(true);
     let response = await fetch('https://still-atoll-05418.herokuapp.com/store')
       .then((res) => {
         if (res.ok) return res.json();
@@ -84,6 +86,7 @@ export default function FaleConosco() {
       .then((res) => res);
     setSelectValue(cidade);
     setData(response.result);
+    setLoading(false);
   };
 
   return (
@@ -123,7 +126,7 @@ export default function FaleConosco() {
                     name="Estado"
                     id="estado"
                   >
-                    <option defaultvalue name="Selecione" disabled selected>
+                    <option defaultvalue="" name="">
                       Selecione
                     </option>
                     <option value="AC">Acre</option>
@@ -233,7 +236,7 @@ export default function FaleConosco() {
                 </S.Div>
               </FormContainer>
             </div>
-            <div>
+            <S.GroupForm>
               <FormContainer>
                 <h1>Procure uma unidade próxima a você</h1>
                 <Select
@@ -243,7 +246,7 @@ export default function FaleConosco() {
                   width="585px"
                   labelAlign="center"
                 >
-                  <option>Selecione</option>
+                  <option defaultvalue="">Selecione</option>
                   <option value="Rio de Janeiro">Rio de Janeiro</option>
                   <option value="São Paulo">São Paulo</option>
                   <option value="Curitiba">Curitiba</option>
@@ -251,7 +254,9 @@ export default function FaleConosco() {
 
                 <S.Div scroll="active">
                   <S.Lista>
-                    {data &&
+                    {loading && <S.Loading />}
+                    {!loading &&
+                      data &&
                       data.map((item, index) =>
                         item.address.includes(selectValue) ? (
                           <li key={index}>
@@ -266,7 +271,7 @@ export default function FaleConosco() {
                   </S.Lista>
                 </S.Div>
               </FormContainer>
-            </div>
+            </S.GroupForm>
           </S.Div>
         </S.Container>
         <Footer />

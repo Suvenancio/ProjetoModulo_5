@@ -11,8 +11,10 @@ const Dentistas = () => {
   const [api, setApi] = useState([]);
   const [apiChegou, setApichegou] = useState(false);
   const [select, setSelect] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const request = async (e) => {
+    setLoading(true);
     let cidade = e.target.value;
     let res = await fetch('http://damp-journey-22615.herokuapp.com/dentista')
       .then((res) => res.json())
@@ -21,6 +23,7 @@ const Dentistas = () => {
         setApi(result);
         setSelect(cidade);
         setApichegou(true);
+        setLoading(false);
       });
   };
 
@@ -49,12 +52,13 @@ const Dentistas = () => {
           label="Selecione sua cidade e veja os dentistas conveniados"
           width="400px"
         >
-          <option>Selecione</option>
+          <option defaultvalue="">Selecione</option>
           <option value="Curitiba">Curitiba</option>
           <option value="Rio de Janeiro">Rio de Janeiro</option>
           <option value="São Paulo">São Paulo</option>
         </Select>
         <S.Container>
+          {loading && <S.Loading />}
           {!!api && apiChegou
             ? api.map((item) => {
                 if (item.CIDADE.includes(select)) {

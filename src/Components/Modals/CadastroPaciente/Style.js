@@ -33,6 +33,8 @@ export const Forms = styled.form`
   grid-area: form;
   border: 1px solid #141414;
   border-radius: 5%;
+  display: flex;
+
   background: #090922ad;
   padding: 10px;
   margin-bottom: 20px;
@@ -45,8 +47,8 @@ export const Title = styled.h1`
 
 export const ImgCadastro = styled.img`
   grid-area: img;
-  height: 480px;
-  width: 565px;
+  height: 480px !important;
+  width: 565px !important;
   border: 1px solid #141414;
   border-radius: 10%;
   animation: 1.7s ${openMain};

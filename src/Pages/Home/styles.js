@@ -7,7 +7,18 @@ export const GridContainer = styled.main`
     'header'
     'content'
     'footer';
-  grid-template-rows: 80px 1800px 250px;
+  grid-template-rows: 100px auto 250px;
+  @media (max-width: 476px) {
+    grid-template-rows: 300px auto 250px;
+    grid-template-areas:
+      'header'
+      'content'
+      'content'
+      'content'
+      'footer'
+      'footer';
+  }
+
   > header {
     grid-area: header;
   }
@@ -31,7 +42,7 @@ export const P = styled.p`
 
 export const Section = styled.section`
   height: 550px;
-
+  padding: 30px 0;
   display: flex;
   flex-direction: ${(props) => props.flexDirection};
   justify-content: space-around;
@@ -39,12 +50,19 @@ export const Section = styled.section`
   background-color: rgba(14, 41, 64);
   @media (max-width: 476px) {
     flex-direction: column;
-    height: 1200px;
+    height: 2000px;
     :nth-child(2n) {
       justify-content: center;
 
       height: 2000px;
+      @media (max-width: 476px) {
+        height: 1200px;
+      }
     }
+  }
+  & + section {
+    padding-top: 0;
+    padding-bottom: 40px;
   }
 `;
 
@@ -83,9 +101,9 @@ export const BalaoHome = styled.div`
     }
   }
   @media (max-width: 476px) {
-    width: 41%;
+    width: 55%;
     left: 50%;
-    top: 78%;
+    top: 88%;
   }
 `;
 export const DivCard = styled.div`

@@ -15,7 +15,10 @@ export const GridContainer = styled.main`
     'header'
     'content'
     'footer';
-  grid-template-rows: 80px 1180px 250px;
+  grid-template-rows: 100px 1180px 250px;
+  @media (max-width: 476px) {
+    grid-template-rows: 300px 1800px 250px;
+  }
   > header {
     grid-area: header;
   }
@@ -125,6 +128,7 @@ export const Div = styled.div`
     margin-left: 40px;
     height: 100%;
     @media (max-width: 476px) {
+      height: auto;
       border: none;
     }
   }
@@ -137,4 +141,44 @@ export const Error = styled.span`
   line-height: 1rem;
   margin-left: 50px;
   text-shadow: 1px 1px black;
+`;
+
+export const GroupForm = styled.div`
+  > form {
+    @media (max-width: 476px) {
+    }
+  }
+`;
+
+export const Loading = styled.div`
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+
+  @media (max-width: 476px) {
+    width: 50px;
+    height: 50px;
+  }
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;
