@@ -27,7 +27,7 @@ export default function Portal() {
   const { usuario } = useContext(Context);
 
   useEffect(() => {
-    fetch('http://damp-journey-22615.herokuapp.com/dentista')
+    fetch('https://damp-journey-22615.herokuapp.com/dentista')
       .then((res) => res.json())
       .then((result) => {
         setData(result);
